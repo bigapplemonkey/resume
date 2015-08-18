@@ -1,0 +1,727 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: "entypo", sans-serif;
+}
+
+/* general selectors*/
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Arvo", serif;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+body {
+  background-color: #fef7f7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+em {
+  font-style: normal;
+}
+
+h1 {
+  font-size: 2.5em;
+  display: inline;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h4 {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: 0.1em;
+}
+
+p {
+  font-family: "Roboto", sans-serif;
+  margin-top: 20px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 21px;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.8);
+  display: inline;
+}
+
+a:hover,
+.bottom-mark:hover {
+  color: #3369e8;
+}
+
+a,
+a:active,
+a:focus,
+a:visited,
+a:hover {
+  text-decoration: none !important;
+  -moz-outline-style: none !important;
+  outline: none !important;
+}
+
+ul {
+  list-style-type: none;
+  font-size: 13px;
+  line-height: 22px;
+}
+
+li {
+  margin-right: 1.5em;
+}
+
+li:last-child {
+  margin-right: 0;
+}
+
+hr {
+  margin-top: 0px;
+}
+
+.flex-box {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  width: 100%;
+}
+
+.full-container {
+  margin: 0 auto;
+  max-width: 1240px;
+}
+
+.container {
+  padding-right: 17px;
+  padding-left: 17px;
+}
+
+.white-color {
+  background-color: #fff;
+  padding-bottom: 45px;
+}
+
+.restrict-width {
+  max-width: 970px;
+  padding-top: 50px;
+}
+
+.section-container {
+  margin-top: 22px;
+}
+
+.section-title {
+  margin-bottom: 36px;
+}
+
+.education-entry,
+.work-entry,
+.project-entry,
+.online-education-entry {
+  margin-bottom: 23px;
+}
+
+.entry-title {
+  font-size: 15px;
+}
+
+.date-text {
+  font-weight: 400;
+  font-size: 14px;
+  color: #999;
+  line-height: 19px;
+  float: left;
+}
+
+.location-text {
+  font-size: 14px;
+  color: #999;
+  line-height: 22px;
+  float: right;
+}
+
+.location-icon {
+  font-size: 20px;
+  color: #999;
+  margin-right: 5px;
+}
+
+.hightlight {
+  color: #3369e8;
+  -webkit-transition: color 0.5s ease;
+  -moz-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+}
+
+.light-border {
+  border: 1px solid #ccc;
+}
+
+a.anchor {
+  display: block;
+  position: relative;
+  top: -135px;
+  visibility: hidden;
+}
+
+/* navigation bar selectors*/
+.navigation-bar {
+  background-color: rgb(251, 188, 5);
+  z-index: 150;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  -webkit-box-shadow: 0 14px 6px -6px rgba(119, 119, 119, 0.45);
+  -moz-box-shadow: 0 14px 6px -6px rgba(119, 119, 119, 0.45);
+  box-shadow: 0 14px 6px -6px rgba(119, 119, 119, 0.45);
+  letter-spacing: 0;
+}
+
+paper-ripple {
+  color: white;
+}
+
+paper-tabs {
+  margin-top: 8px;
+  max-width: 370px;
+  padding-top: 10px;
+}
+
+.navigation-title {
+  margin-top: 0.6em;
+  font-size: 1.5em;
+  padding-left: 6px;
+}
+
+.tab-container {
+  padding-left: 3px;
+}
+
+.top-link {
+  font-family: "Roboto Mono", Roboto, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+  font-size: 14px;
+}
+
+.education-tab {
+  padding-right: 25px;
+  padding-left: 23px;
+}
+
+/* header selectors*/
+.aqua-color {
+  background-color: #b1deda;
+}
+
+.photo-title {
+  display: block;
+  margin-top: 8px;
+}
+
+.biopic {
+  max-width: 123px;
+  margin: 0 auto;
+  -webkit-box-shadow: 3px 3px 5px 3px rgba(119, 119, 119, 0.45);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 5px 3px rgba(119, 119, 119, 0.45);  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 5px 3px rgba(119, 119, 119, 0.45);  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+.name-role {
+  margin-top: 2.1em;
+  line-height: 1.9em;
+}
+
+.name-header {
+  letter-spacing: -4px;
+  line-height: 15px;
+}
+
+.role-header {
+  margin-top: 0.15em;
+  font-size: 1.4em;
+}
+
+.welcome-message {
+  font-size: 14px;
+  margin-top: 1.8em;
+  margin-bottom: 1.5em;
+}
+
+.social-item {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 30px;
+  float: right;
+}
+
+.social-icon {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 2.2em;
+}
+
+.social-icon:hover {
+  color: #3369e8;
+}
+
+#main {
+  letter-spacing: 1px;
+}
+
+#header {
+  margin-top: 70px;
+}
+
+/* skill section selectors*/
+.skill-item {
+  width: 100%;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.rating-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  width: 100%
+}
+
+.rating-icons {
+  width: 100%;
+  margin-left: 15px;
+}
+
+.rating-icon {
+  font-size: 19px;
+  color: #ccc;
+  margin-right: 5px;
+  float: left !important;
+}
+
+.rated {
+  color: rgba(251, 188, 5, 0.7);
+}
+
+#skills {
+  margin-bottom: 35px;
+}
+
+/* work section selectors*/
+
+/* project section selectors*/
+.project-text {
+  margin-bottom: 15px;
+}
+
+.project-photo {
+  margin-bottom: 10px;
+  cursor: pointer;
+  max-width: 210px;
+}
+
+/* education section selectors*/
+.education-entry,
+.online-education-entry {
+  padding-left: 10%;
+}
+
+.online-title {
+  margin-bottom: 25px;
+}
+
+/* map section selectors*/
+.location-title {
+  margin-right: 23px;
+}
+
+.pop-up-text {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+}
+
+.pop-up-header {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.marker-photo {
+  max-width: 200px !important;
+  margin-bottom: 10px;
+}
+
+#map {
+  display: block;
+  height: 100%;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+}
+
+#mapDiv {
+  height: 500px;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
+/* footer-contact section selectors*/
+.bottom-mark {
+  color: #999;
+  letter-spacing: -3px;
+  line-height: 14px;
+  font-size: 27px;
+}
+
+#footerContacts {
+  float: right !important;
+}
+
+.contact-item {
+  width: 100%;
+}
+
+.social-contact-item {
+  width: 30px;
+}
+
+/* modal selectors*/
+.modal-backdrop {
+  background-color: #ccc;
+}
+
+.modal-content {
+  border-radius: 0;
+}
+
+.modal-body {
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.modal-dialog {
+  margin-top: 100px;
+  max-width: 85%;
+}
+
+.text-muted {
+  color: #999;
+}
+
+#letsConnect {
+  margin-top: 70px;
+  margin-bottom: 50px;
+}
+
+/* Bar chart stuff */
+.chart div {
+  font: 10px sans-serif;
+  background-color: #4A4A4A;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  height: 12px;
+  color: white;
+  display: inline-block;
+}
+
+/* photo caption effect */
+.photo-with-caption {
+  position: relative;
+  width: 210px;
+  height: 133px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  background-color: #f6f6f6;
+}
+
+.caption-text {
+  font-size: 11px;
+  padding-top: 5px;
+  padding-right: 9px;
+  padding-left: 9px;
+  line-height: 15px;
+  margin: 0;
+}
+
+.photo-effect {
+  /*height: -webkit-calc(100% + 40px);
+  height: -moz-calc(100% + 40px);*/
+  height: 173px;
+  padding-top: 40px;
+  position: absolute;
+  left: 0;
+  top: -40px;
+  cursor: pointer;
+  -webkit-transition: top 0.3s ease-in-out;
+  -moz-transition: top 0.3s ease-in-out;
+  -o-transition: top 0.3s ease-in-out;
+  transition: top 0.3s ease-in-out
+}
+
+.photo-effect:hover {
+  top: 0;
+}
+
+@media only screen and (min-width: 445px) {
+  .skill-item {
+    width: 43%;
+  }
+}
+
+@media only screen and (min-width: 460px) {
+  .name-role,
+  .photo-container {
+    float: left;
+  }
+
+  .name-role {
+    margin-top: 1.5em;
+    margin-left: 1em;
+    display: table-cell;
+    vertical-align: bottom;
+  }
+
+  .restrict-width {
+    padding-top: 50px;
+  }
+
+  ul {
+    font-size: 14px;
+  }
+
+  .photo-title {
+    margin-top: 15px;
+  }
+
+  h1 {
+    font-size: 3em;
+  }
+
+  .name-header {
+    line-height: 25px;
+  }
+
+  .top-link {
+    font-size: 15px;
+  }
+
+  .skill-item {
+    width: 40%;
+  }
+
+  .rating-text {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (min-width: 510px) {
+  .resume-body {
+    width: 509px;
+  }
+
+  .project-photo, .photo-with-caption {
+    display: inline;
+    margin-right: 20px;
+    margin-left: inherit;
+    float: left;
+  }
+
+  .modal-dialog {
+    max-width: 480px;
+  }
+}
+
+@media only screen and (min-width: 710px) and (max-width: 767px) {
+  .photo-title {
+    width: 52%;
+  }
+
+  .welcome-message {
+    width: 47%;
+    font-size: 15px;
+  }
+
+  .restrict-width {
+    padding-left: 17px;
+  }
+
+  #topContacts {
+    margin-top: 1.7em;
+    margin-left: 1.3em;
+  }
+}
+
+/*sm breakpoint*/
+@media only screen and (min-width: 768px) {
+  #topContacts {
+    margin-top: 2.5em;
+    margin-left: 1.3em;
+  }
+
+  .welcome-message {
+    font-size: 15px;
+  }
+
+  .resume-body {
+    width: 708px;
+  }
+
+  p {
+    font-size: 15px;
+  }
+
+  .entry-title {
+    font-size: 17px;
+  }
+
+  .date-text,
+  .location-text {
+    font-size: 15px;
+  }
+
+  #footerContacts {
+    float: none;
+  }
+
+  .footer-name {
+    margin-top: 20px;
+  }
+
+  paper-tabs {
+    max-width: 460px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 10px;
+    height: 55px;
+  }
+
+  .skill-item {
+    width: 28%;
+  }
+
+  .education-entry,
+  .online-education-entry {
+    padding-left: 0;
+  }
+
+  .online-title {
+    padding-left: 0;
+  }
+
+  a.anchor {
+    top: -110px;
+  }
+
+  .navigation-title {
+    margin-top: 0.8em;
+  }
+
+  ul {
+    line-height: inherit;
+  }
+
+  .footer-name {
+    margin-left: 10px;
+  }
+}
+
+/*md breakpoint*/
+@media only screen and (min-width: 992px) {
+  .biopic {
+    max-width: 144px;
+  }
+
+  h1 {
+    font-size: 3.4em;
+  }
+
+  h2 {
+    font-size: 1.7em;
+  }
+
+  .role-header {
+    font-size: 1.5em;
+  }
+
+  #topContacts {
+    margin-top: 2.4em;
+    margin-left: 0;
+    font-size: 15px;
+  }
+
+  .navigation-title {
+    margin-top: 0.6em;
+    font-size: 1.7em;
+  }
+
+  .restrict-width {
+    padding-bottom: 45px;
+  }
+
+  .resume-body {
+    width: 100%;
+  }
+
+  #header {
+    margin-top: 110px;
+  }
+
+  .name-role {
+    margin-top: 2.2em;
+  }
+
+  em,
+  .example-link {
+    font-size: 15px;
+  }
+
+  .entry-title {
+    font-size: 18px;
+  }
+
+  .date-text,
+  .location-text {
+    font-size: 16px;
+  }
+
+  paper-tabs {
+    max-width: 490px;
+  }
+
+  .skill-item {
+    width: 22%;
+  }
+
+  .welcome-message {
+    margin-top: 2.4em;
+  }
+}
