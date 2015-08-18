@@ -228,7 +228,7 @@ paper-tabs {
   font-family: "Roboto Mono", Roboto, sans-serif;
   font-weight: 700;
   letter-spacing: 0.25px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .education-tab {
@@ -556,10 +556,6 @@ paper-tabs {
     margin-left: inherit;
     float: left;
   }
-
-  .modal-dialog {
-    max-width: 480px;
-  }
 }
 
 @media only screen and (min-width: 710px) and (max-width: 767px) {
@@ -656,6 +652,10 @@ paper-tabs {
   }
   .photo-effect:hover {
     top: 0;
+  }
+
+  .modal-dialog {
+    max-width: 480px;
   }
 }
 
