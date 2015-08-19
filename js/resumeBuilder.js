@@ -80,11 +80,11 @@ var work = {
         "employer": "PDVSA",
         "title": "Project Engineer",
         "dates": "2006 – 2008",
-        "location": "Caracas, Venezuela",
+        "location": "Maracaibo, Venezuela",
         "description": "Ribeye picanha capicola, doner shankle meatball strip steak shank sirloin salami jowl sausage brisket pancetta turducken. Filet mignon turducken sausage drumstick alcatra ball tip. Picanha turkey turducken, beef t-bone ham hock short loin pork loin filet mignon corned beef. Boudin prosciutto spare ribs short ribs salami.",
         "url": "http://www.pdvsa.com",
         "locationImage": "http://placehold.it/200x100/F6EDED",
-        "locationURL": "https://en.wikipedia.org/wiki/Caracas",
+        "locationURL": "https://en.wikipedia.org/wiki/Maracaibo",
         "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
     }]
 }
