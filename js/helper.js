@@ -110,8 +110,9 @@ See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
 var map; // declares a global map variable
-var infobox; // declares a global infobox variable
-var marker;
+//var infobox; // declares a global infobox variable
+var currentInfobox;
+var currentMarker;
 //style for the pop-up infobox.
 var pop_up_info = 'border: 1px solid #ccc; background-color: #ffffff; padding: 16px; margin-top: 8px;';
 var bounceTimer;
@@ -244,10 +245,10 @@ function initializeMap() {
   //infobox when the map is zoomed out
   google.maps.event.addListener(map, "zoom_changed", function() {
     var newZoom = map.getZoom();
-    if (infobox && newZoom < 11) {
-      infobox.close();
-      if (marker.getAnimation() != null) {
-        marker.setAnimation(null);
+    if ( newZoom < 11) {
+      if(currentInfobox) currentInfobox.close();
+      if (currentMarker && currentMarker.getAnimation() != null) {
+        currentMarker.setAnimation(null);
       }
     }
   });
@@ -329,7 +330,7 @@ function initializeMap() {
       anchor: new google.maps.Point(5.7, 50)
     };
 
-    marker = new google.maps.Marker({
+    var marker = new google.maps.Marker({
       map: map,
       position: placeData.geometry.location,
       title: name,
@@ -368,15 +369,22 @@ function initializeMap() {
     };
 
     //Creates the pop-up infobox, adding the configuration options set above.
-    infobox = new InfoBox(infoboxOptions);
+    var infobox = new InfoBox(infoboxOptions);
 
     // hmmmm, I wonder what this is about...
     //Add an 'event listener' to the map marker to listen out for when it is clicked.
     google.maps.event.addListener(marker, "click", function(e) {
       //adding bouncing animation
+      if (currentMarker && currentMarker.getAnimation() != null) {
+        currentMarker.setAnimation(null);
+      }
+      currentMarker = this;
       if (this.getAnimation() == null || typeof this.getAnimation() === 'undefined') {
         this.setAnimation(google.maps.Animation.BOUNCE);
       }
+
+      if(currentInfobox) currentInfobox.close();
+      currentInfobox = infobox;
       //Open the info box.
       infobox.open(map, this);
       //Changes the z-index property of the marker to make the marker appear on top of other markers.
@@ -389,8 +397,8 @@ function initializeMap() {
 
     google.maps.event.addListener(infobox, "closeclick", function(e) {
       //removing bouncing animation
-      if (marker.getAnimation() != null) {
-        marker.setAnimation(null);
+      if (currentMarker && currentMarker.getAnimation() != null) {
+        currentMarker.setAnimation(null);
       }
     });
 
