@@ -14,9 +14,9 @@
 
 body {
   background-color: #fef7f7;
-  -webkit-font-smoothing: subpixel-antialiased;;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
+  /*text-rendering: optimizeLegibility;*/
 }
 
 em {
@@ -629,11 +629,11 @@ paper-tabs {
 
   .education-entry,
   .online-education-entry {
-    padding-left: 0;
+    padding-left: 15px;
   }
 
   .online-title {
-    padding-left: 0;
+    padding-left: 15px;
   }
 
   a.anchor {
