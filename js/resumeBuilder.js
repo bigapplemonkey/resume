@@ -23,7 +23,7 @@ var bio = {
     }, {
         "puppeteer master": 0
     }],
-    "bioPic": "images/myPhoto.jpg"
+    "bioPic": "images/myPhoto_2x.jpg"
 }
 
 var education = {

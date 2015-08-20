@@ -322,7 +322,7 @@ function initializeMap() {
 
     // marker is an object with additional data about the pin for a single location
     var markerIcon = {
-      url: 'images/marker50.png',
+      url: 'images/marker50_opt.png',
       //The point on the image to measure the anchor from. 0, 0 is the top left.
       origin: new google.maps.Point(0, 0),
       //The x y coordinates of the anchor point on the marker. e.g. If your map marker was a drawing pin then the anchor would be the tip of the pin.
@@ -428,7 +428,7 @@ function initializeMap() {
     var titleBar = document.createElement('div');
     titleBar.style.backgroundColor = '#fef7f7';
     titleBar.style.cssFloat = 'right';
-    titleBar.innerHTML = '<img src="images/mapLogo.png"/>';
+    titleBar.innerHTML = '<img class="img-responsive" src="images/mapLogo_opt.png"/>';
     controlUI.appendChild(titleBar);
 
   }
