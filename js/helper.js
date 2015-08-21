@@ -419,7 +419,7 @@ function initializeMap() {
     var titleBar = document.createElement('div');
     titleBar.style.backgroundColor = '#fef7f7';
     titleBar.style.cssFloat = 'right';
-    titleBar.innerHTML = '<img class="img-responsive" src="images/mapLogo_opt.png"/>';
+    titleBar.innerHTML = '<img class="img-responsive" src="images/mapLogo.png"/>';
     controlUI.appendChild(titleBar);
 
   }
