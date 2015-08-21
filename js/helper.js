@@ -110,12 +110,10 @@ See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
 var map; // declares a global map variable
-//var infobox; // declares a global infobox variable
-var currentInfobox;
-var currentMarker;
+var currentMarker; //declares a global marker to keep track of the selected marker
+var currentInfobox; //declares a global infobox to keep track of the clicked infobox
 //style for the pop-up infobox.
 var pop_up_info = 'border: 1px solid #ccc; background-color: #ffffff; padding: 16px; margin-top: 8px;';
-var bounceTimer;
 
 /*
 Start here! initializeMap() is called when page is loaded.
@@ -123,18 +121,11 @@ Start here! initializeMap() is called when page is loaded.
 function initializeMap() {
 
   var locations = [];
-  //data for display with each marker
+  //arrays with data to display for each location
   var texts = [];
   var urls = [];
   var images = [];
   var locationIndex = 0; //index to iterate through locations
-  //save information of location being processed
-  var currentLocation = {
-    name: '',
-    url: '',
-    image: '',
-    text: ''
-  }
 
   //Object describing map style.
   var styleMap = [{
@@ -222,10 +213,10 @@ function initializeMap() {
     maxZoom: mapZoomMax,
     minZoom: mapZoomMin,
     panControl: true,
-    mapTypeControl: false,
-    mapTypeControlOptions: {
-      mapTypeIds: ['map_styled']
-    }
+    mapTypeControl: false
+    // mapTypeControlOptions: {
+    //   mapTypeIds: ['map_styled']
+    // }
   };
 
   //Create logo panel which appears on the right-hand side.
@@ -242,7 +233,7 @@ function initializeMap() {
   map.setMapTypeId('map_styled');
 
   //Continuously listens out for when the zoom level changes and closes the active
-  //infobox when the map is zoomed out
+  //infobox when the map is zoomed out and removes marker bouncing if active
   google.maps.event.addListener(map, "zoom_changed", function() {
     var newZoom = map.getZoom();
     if ( newZoom < 11) {
@@ -312,14 +303,6 @@ function initializeMap() {
     var name = placeData.formatted_address; // name of the place from the place service
     var bounds = window.mapBounds; // current boundaries of the map window
 
-    currentLocation.name = locations[locationIndex];
-    currentLocation.url = urls[locationIndex];
-    currentLocation.text = texts[locationIndex];
-    currentLocation.image = images[locationIndex];
-
-    //to track the location in other arrays
-    locationIndex++;
-
 
     // marker is an object with additional data about the pin for a single location
     var markerIcon = {
@@ -344,9 +327,12 @@ function initializeMap() {
     //Creates the information to go in the pop-up info box.
     var boxText = document.createElement("div");
     boxText.style.cssText = pop_up_info;
-    boxText.innerHTML = '<img class="center-block img-responsive marker-photo light-border" src="'  +  currentLocation['image'] +
-    '"><h4 class="pop-up-header"><a href="' + currentLocation['url'] + '" target="_blank">' +  currentLocation['name'] +
-    '</a></h4><p class="pop-up-text">' + currentLocation['text'] + '</p>';
+    boxText.innerHTML = '<img class="center-block img-responsive marker-photo light-border" src="'  +  images[locationIndex] +
+    '"><h4 class="pop-up-header"><a href="' + urls[locationIndex] + '" target="_blank">' +  name +
+    '</a></h4><p class="pop-up-text">' + texts[locationIndex] + '</p>';
+
+    //to track the location in other arrays
+    locationIndex++;
 
     //Sets up the configuration options of the pop-up info box.
     var infoboxOptions = {
@@ -365,7 +351,8 @@ function initializeMap() {
       infoBoxClearance: new google.maps.Size(1, 1),
       isHidden: false,
       pane: "floatPane",
-      enableEventPropagation: false
+      enableEventPropagation: false,
+      disableAutoPan: true
     };
 
     //Creates the pop-up infobox, adding the configuration options set above.
@@ -390,9 +377,9 @@ function initializeMap() {
       //Changes the z-index property of the marker to make the marker appear on top of other markers.
       this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
       //Zooms the map.
-      setZoomWhenMarkerClicked();
+      map.setZoom(11);
       //Sets the marker to be the center of the map.
-      map.setCenter(new google.maps.LatLng(marker.getPosition()["G"] - 2, marker.getPosition()["K"]));
+      map.setCenter(new google.maps.LatLng(marker.getPosition()["G"] - 0.035, marker.getPosition()["K"]));
     });
 
     google.maps.event.addListener(infobox, "closeclick", function(e) {
@@ -419,10 +406,6 @@ function initializeMap() {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       createMapMarkerAndInfoBox(results[0]);
     }
-  }
-
-  function setZoomWhenMarkerClicked() {
-    map.setZoom(11);
   }
 
   function createLogoPanel(logoPanelDiv) {
