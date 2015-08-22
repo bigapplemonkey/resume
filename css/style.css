@@ -12,6 +12,11 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
+
+html {
+  overflow-y: scroll;
+}
+
 body {
   background-color: #fef7f7;
   -webkit-font-smoothing: antialiased;

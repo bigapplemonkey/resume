@@ -246,9 +246,16 @@ $(document).ready(function() {
         var imageWidth = theImage.width
 
         $('#myModal').modal();
+
+        //hack to prevent content shifting when a modal opens
+        var bodyRightPadding = parseInt($('body').css('padding-right'), 10);
+        if(bodyRightPadding > 0) $('body').css('padding-right', '0')
+
         $('#myModal .modal-body').html(theImage);
         $('#myModal .modal-body img').attr('id', 'modalImage');
         $('#modalImage').addClass('img-responsive center-block');
+
+
 
 
         var isSafari = navigator.vendor.indexOf('Apple') == 0 && /\sSafari\//.test(navigator.userAgent); // true or false

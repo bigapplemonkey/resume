@@ -28,9 +28,9 @@ var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span
 
 var HTMLskillsStart = '<div class="col-xs-12 section-title"><h2>Skills at a Glance</h2></div><div class="col-xs-12"><ul id="skills" class="flex-box"></ul></div><div class="col-xs-12"><hr></div>';
 var HTMLskills = '<li class="skill-item flex-box"><span class="rating-text text-capitalize">%data%</span>' +
-'<div class="rating-icons"><span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
-'<span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
-'<span class="entypo-thumbs-up rating-icon"></span></div></li>';
+    '<div class="rating-icons"><span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
+    '<span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
+    '<span class="entypo-thumbs-up rating-icon"></span></div></li>';
 
 var HTMLworkStart = '<div class="work-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
 var HTMLworkEmployer = '<a class="entry-title" href="%data%" target="_blank">%data%';
@@ -45,7 +45,7 @@ var HTMLprojectDates = '<div class="date-text flex-item">%data%</div>';
 var HTMLprojectDescription = '<p class="project-text"><br>%data%</p>';
 var HTMLprojectImage = '<img class="img-responsive project-photo center-block light-border" src="%data%" alt="Project photo">';
 var HTMLprojectImageWithCaption = '<div class="photo-with-caption effect light-border center-block"><p class="caption-text">%data%</p>' +
-'<img class="photo-effect limit-image img-responsive" src="%data%" alt="Project Photo"/></div>'
+    '<img class="photo-effect limit-image img-responsive" src="%data%" alt="Project Photo"/></div>'
 
 var HTMLschoolStart = '<div class="education-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
 var HTMLschoolName = '<a class="flex-item entry-title" href="%data%" target="_blank">%data%';
@@ -62,8 +62,8 @@ var HTMLonlineDates = '<div class="date-text flex-item">%data%</div>';
 var HTMLonlineURL = '<br><a class="example-link" href="%data%">%data%</a>';
 
 var HTMLfooterStart = '<div class="row"><div class="col-xs-4 col-sm-2 text-left footer-name">' +
-'<a href="#main"><h1 class="text-uppercase bottom-mark">%data%</h1></a></div><div class="col-xs-8 col-sm-3 pull-right">' +
-'<ul id="footerContacts" class="flex-box"></ul></div></div>'
+    '<a href="#main"><h1 class="text-uppercase bottom-mark">%data%</h1></a></div><div class="col-xs-8 col-sm-3 pull-right">' +
+    '<ul id="footerContacts" class="flex-box"></ul></div></div>'
 var HTMLfooterEmail = '<li class="contact-item hidden-xs text-uppercase"><a href="mailto:%data%" class="text-muted">%data%</a></li>';
 var HTMLfooterMobile = '<li class="contact-item hidden-xs"><a href="tel:%data%" class="text-muted">%data%</a></li>';
 var HTMLfooterLocation = '<li class="contact-item hidden-xs text-uppercase text-muted">%data%</li>';
@@ -80,10 +80,10 @@ var googleMap = '<div id="map" class="col-sm-12 light-border"></div>';
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
 */
 $(document).ready(function() {
-  $('button').click(function() {
-    var iName = inName() || function() {};
-    $('#name').html(iName);
-  });
+    $('button').click(function() {
+        var iName = inName() || function() {};
+        $('#name').html(iName);
+    });
 });
 
 /*
@@ -92,15 +92,15 @@ The next few lines about clicks are for the Collecting Click Locations quiz in L
 clickLocations = [];
 
 function logClicks(x, y) {
-  clickLocations.push({
-    x: x,
-    y: y
-  });
-  console.log('x location: ' + x + '; y location: ' + y);
+    clickLocations.push({
+        x: x,
+        y: y
+    });
+    console.log('x location: ' + x + '; y location: ' + y);
 }
 
 $(document).click(function(loc) {
-  logClicks(loc.pageX, loc.pageY);
+    logClicks(loc.pageX, loc.pageY);
 });
 
 
@@ -112,6 +112,7 @@ https://developers.google.com/maps/documentation/javascript/reference
 var map; // declares a global map variable
 var currentMarker; //declares a global marker to keep track of the selected marker
 var currentInfobox; //declares a global infobox to keep track of the clicked infobox
+var initialCenter; //for reset purposes
 //style for the pop-up infobox.
 var pop_up_info = 'border: 1px solid #ccc; background-color: #ffffff; padding: 16px; margin-top: 8px;';
 
@@ -120,360 +121,360 @@ Start here! initializeMap() is called when page is loaded.
 */
 function initializeMap() {
 
-  var locations = [];
-  //arrays with data to display for each location
-  var texts = [];
-  var urls = [];
-  var images = [];
-  var locationIndex = 0; //index to iterate through locations
-
-  //Object describing map style.
-  var styleMap = [{
-    "featureType": "administrative",
-    "elementType": "geometry",
-    "stylers": [{
-      "visibility": "off"
-    }]
-  }, {
-    "featureType": "administrative.country",
-    "elementType": "geometry",
-    "stylers": [{
-      "visibility": "on"
-    }]
-  }, {
-    "featureType": "administrative.province",
-    "elementType": "geometry",
-    "stylers": [{
-      "visibility": "on"
-    }]
-  }, {
-    "featureType": "all",
-    "elementType": "labels.text.fill",
-    "stylers": [{
-      "color": "#736c68"
-    }]
-  }, {
-    "featureType": "administrative.country",
-    "elementType": "geometry",
-    "stylers": [{
-      "color": "#D1D1D1"
-    }]
-  }, {
-    "featureType": "poi",
-    "stylers": [{
-      "visibility": "off"
-    }]
-  }, {
-    "featureType": "transit",
-    "stylers": [{
-      "visibility": "off"
-    }]
-  }, {
-    "featureType": "road",
-    "stylers": [{
-      "visibility": "on"
-    }]
-  },
-  {
-    "featureType": "road.highway",
-    "stylers": [
-    { "visibility": "off" }
-    ]
-  }, {
-    "featureType": "landscape",
-    "stylers": [{
-      "color": "#F6EDED"
-    }]
-  }, {
-    "featureType": "water",
-    "stylers": [{
-      "visibility": "on"
-    }, {
-      "color": "#b4e4e0"
-    }]
-  }];
-
-  var styledMap = new google.maps.StyledMapType(styleMap, {
-    name: 'Map Style'
-  });
-
-  //The degree to which the map is zoomed in. This can range from 0 (least zoomed) to 21 and above (most zoomed).
-  var mapZoom = 2;
-  //The max and min zoom levels that are allowed.
-  var mapZoomMax = 12;
-  var mapZoomMin = 2;
-
-
-  var mapOptions = {
-    //commented in case I decide to disable in the future
-    // disableDefaultUI: true,
-    zoom: mapZoom,
-    //The type of map. In addition to ROADMAP, the other 'premade' map styles are SATELLITE, TERRAIN and HYBRID.
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    maxZoom: mapZoomMax,
-    minZoom: mapZoomMin,
-    panControl: true,
-    mapTypeControl: false
-    // mapTypeControlOptions: {
-    //   mapTypeIds: ['map_styled']
-    // }
-  };
-
-  //Create logo panel which appears on the right-hand side.
-  var logoPanelDiv = document.createElement('div');
-  var mapLogoPanel = new createLogoPanel(logoPanelDiv, map);
-
-  //Create the reset map button.
-  var resetButtonDiv = document.createElement('div');
-  var mapResetButton = new createResetButton(resetButtonDiv, map);
-
-  // This next line makes `map` a new Google Map JavaScript Object and attaches it to
-  // <div id="map">, which is appended as part of an exercise late in the course.
-  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
-  //Assigning the style defined above to the map.
-  map.mapTypes.set('map_styled', styledMap);
-  //Setting the one of the styles to display as default as the map loads.
-  map.setMapTypeId('map_styled');
-
-  //Continuously listens out for when the zoom level changes and closes the active
-  //infobox when the map is zoomed out and removes marker bouncing if active
-  google.maps.event.addListener(map, "zoom_changed", function() {
-    var newZoom = map.getZoom();
-    if ( newZoom < 11) {
-      if(currentInfobox) currentInfobox.close();
-      if (currentMarker && currentMarker.getAnimation() != null) {
-        currentMarker.setAnimation(null);
-      }
-    }
-  });
-
-  //Add the control panel and reset button (created previously) to the map.
-  map.controls[google.maps.ControlPosition.RIGHT_TOP].push(logoPanelDiv);
-  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(resetButtonDiv);
-
-  /*
-  locationFinder() returns an array of every location string from the JSONs
-  written for bio, education, and work.
-  */
-  function locationFinder() {
-
-    // initializes an empty array
     var locations = [];
-    var inArray; //to check if locations was included
+    //arrays with data to display for each location
+    var texts = [];
+    var urls = [];
+    var images = [];
+    var locationIndex = 0; //index to iterate through locations
 
-    // adds the location property from bio to the locations array
-    locations.push(bio.contacts.location);
-    texts.push(bio.contacts.locationText);
-    urls.push(bio.contacts.locationURL);
-    images.push(bio.contacts.locationImage);
+    //Object describing map style.
+    var styleMap = [{
+        "featureType": "administrative",
+        "elementType": "geometry",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "administrative.country",
+        "elementType": "geometry",
+        "stylers": [{
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "administrative.province",
+        "elementType": "geometry",
+        "stylers": [{
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "all",
+        "elementType": "labels.text.fill",
+        "stylers": [{
+            "color": "#736c68"
+        }]
+    }, {
+        "featureType": "administrative.country",
+        "elementType": "geometry",
+        "stylers": [{
+            "color": "#D1D1D1"
+        }]
+    }, {
+        "featureType": "poi",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "transit",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "road",
+        "stylers": [{
+            "visibility": "on"
+        }]
+    }, {
+        "featureType": "road.highway",
+        "stylers": [{
+            "visibility": "off"
+        }]
+    }, {
+        "featureType": "landscape",
+        "stylers": [{
+            "color": "#F6EDED"
+        }]
+    }, {
+        "featureType": "water",
+        "stylers": [{
+            "visibility": "on"
+        }, {
+            "color": "#b4e4e0"
+        }]
+    }];
 
-    // iterates through school locations and appends each location to
-    // the locations array
-    for (var school in education.schools) {
-      inArray = $.inArray(education.schools[school].location, locations);
-      if(inArray == -1) {
-        locations.push(education.schools[school].location);
-        texts.push(education.schools[school].locationText);
-        urls.push(education.schools[school].locationURL);
-        images.push(education.schools[school].locationImage);
-      }
-    }
+    var styledMap = new google.maps.StyledMapType(styleMap, {
+        name: 'Map Style'
+    });
 
-    // iterates through work locations and appends each location to
-    // the locations array
-    for (var job in work.jobs) {
-      inArray = $.inArray(work.jobs[job].location, locations);
-      if(inArray == -1) {
-        locations.push(work.jobs[job].location);
-        texts.push(work.jobs[job].locationText);
-        urls.push(work.jobs[job].locationURL);
-        images.push(work.jobs[job].locationImage);
-      }
-    }
-
-    return locations;
-  }
-
-  /*
-  createMapMarkerAndInfoBox(placeData) reads Google Places search results to create map pins.
-  placeData is the object returned from search results containing information
-  about a single location.
-  */
-  function createMapMarkerAndInfoBox(placeData) {
-
-    // The next lines save location data from the search result object to local variables
-    var lat = placeData.geometry.location.lat(); // latitude from the place service
-    var lon = placeData.geometry.location.lng(); // longitude from the place service
-    var name = placeData.formatted_address; // name of the place from the place service
-    var bounds = window.mapBounds; // current boundaries of the map window
+    //The degree to which the map is zoomed in. This can range from 0 (least zoomed) to 21 and above (most zoomed).
+    var mapZoom = 2;
+    //The max and min zoom levels that are allowed.
+    var mapZoomMax = 12;
+    var mapZoomMin = 2;
 
 
-    // marker is an object with additional data about the pin for a single location
-    var markerIcon = {
-      url: 'images/marker50_opt.png',
-      //The point on the image to measure the anchor from. 0, 0 is the top left.
-      origin: new google.maps.Point(0, 0),
-      //The x y coordinates of the anchor point on the marker. e.g. If your map marker was a drawing pin then the anchor would be the tip of the pin.
-      anchor: new google.maps.Point(5.7, 50)
+    var mapOptions = {
+        //commented in case I decide to disable in the future
+        // disableDefaultUI: true,
+        zoom: mapZoom,
+        //The type of map. In addition to ROADMAP, the other 'premade' map styles are SATELLITE, TERRAIN and HYBRID.
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        maxZoom: mapZoomMax,
+        minZoom: mapZoomMin,
+        panControl: true,
+        mapTypeControl: false
+            // mapTypeControlOptions: {
+            //   mapTypeIds: ['map_styled']
+            // }
     };
 
-    var marker = new google.maps.Marker({
-      map: map,
-      position: placeData.geometry.location,
-      title: name,
-      icon: markerIcon,
-      zIndex: 102
+    //Create logo panel which appears on the right-hand side.
+    var logoPanelDiv = document.createElement('div');
+    var mapLogoPanel = new createLogoPanel(logoPanelDiv, map);
+
+    //Create the reset map button.
+    var resetButtonDiv = document.createElement('div');
+    var mapResetButton = new createResetButton(resetButtonDiv, map);
+
+    // This next line makes `map` a new Google Map JavaScript Object and attaches it to
+    // <div id="map">, which is appended as part of an exercise late in the course.
+    map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+
+    //Assigning the style defined above to the map.
+    map.mapTypes.set('map_styled', styledMap);
+    //Setting the one of the styles to display as default as the map loads.
+    map.setMapTypeId('map_styled');
+
+    //Continuously listens out for when the zoom level changes and closes the active
+    //infobox when the map is zoomed out and removes marker bouncing if active
+    google.maps.event.addListener(map, "zoom_changed", function() {
+        var newZoom = map.getZoom();
+        if (newZoom < 11) {
+            if (currentInfobox) currentInfobox.close();
+            if (currentMarker && currentMarker.getAnimation() != null) {
+                currentMarker.setAnimation(null);
+            }
+        }
     });
 
-    // infoWindows are the little helper windows that open when you click
-    // or hover over a pin on a map. They usually contain more information
-    // about a location.
-    //Creates the information to go in the pop-up info box.
-    var boxText = document.createElement("div");
-    boxText.style.cssText = pop_up_info;
-    boxText.innerHTML = '<img class="center-block img-responsive marker-photo light-border" src="'  +  images[locationIndex] +
-    '"><h4 class="pop-up-header"><a href="' + urls[locationIndex] + '" target="_blank">' +  name +
-    '</a></h4><p class="pop-up-text">' + texts[locationIndex] + '</p>';
+    //Add the control panel and reset button (created previously) to the map.
+    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(logoPanelDiv);
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(resetButtonDiv);
 
-    //to track the location in other arrays
-    locationIndex++;
+    /*
+    locationFinder() returns an array of every location string from the JSONs
+    written for bio, education, and work.
+    */
+    function locationFinder() {
 
-    //Sets up the configuration options of the pop-up info box.
-    var infoboxOptions = {
-      content: boxText,
-      disableAutoPan: false,
-      maxWidth: 0,
-      pixelOffset: new google.maps.Size(-241, 0),
-      zIndex: null,
-      boxStyle: {
-        background: "url('images/pop_up_box_top_arrow.png') no-repeat",
-        opacity: 1,
-        width: "330px"
-      },
-      closeBoxMargin: "10px 2px 2px 2px",
-      closeBoxURL: "images/button_close.png",
-      infoBoxClearance: new google.maps.Size(1, 1),
-      isHidden: false,
-      pane: "floatPane",
-      enableEventPropagation: false,
-      disableAutoPan: true
-    };
+        // initializes an empty array
+        var locations = [];
+        var inArray; //to check if locations was included
 
-    //Creates the pop-up infobox, adding the configuration options set above.
-    var infobox = new InfoBox(infoboxOptions);
+        // adds the location property from bio to the locations array
+        locations.push(bio.contacts.location);
+        texts.push(bio.contacts.locationText);
+        urls.push(bio.contacts.locationURL);
+        images.push(bio.contacts.locationImage);
 
-    // hmmmm, I wonder what this is about...
-    //Add an 'event listener' to the map marker to listen out for when it is clicked.
-    google.maps.event.addListener(marker, "click", function(e) {
-      //adding bouncing animation
-      if (currentMarker && currentMarker.getAnimation() != null) {
-        currentMarker.setAnimation(null);
-      }
-      currentMarker = this;
-      if (this.getAnimation() == null || typeof this.getAnimation() === 'undefined') {
-        this.setAnimation(google.maps.Animation.BOUNCE);
-      }
+        // iterates through school locations and appends each location to
+        // the locations array
+        for (var school in education.schools) {
+            inArray = $.inArray(education.schools[school].location, locations);
+            if (inArray == -1) {
+                locations.push(education.schools[school].location);
+                texts.push(education.schools[school].locationText);
+                urls.push(education.schools[school].locationURL);
+                images.push(education.schools[school].locationImage);
+            }
+        }
 
-      if(currentInfobox) currentInfobox.close();
-      currentInfobox = infobox;
-      //Open the info box.
-      infobox.open(map, this);
-      //Changes the z-index property of the marker to make the marker appear on top of other markers.
-      this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
-      //Zooms the map.
-      map.setZoom(11);
-      //Sets the marker to be the center of the map.
-      map.setCenter(new google.maps.LatLng(marker.getPosition()["G"] - 0.035, marker.getPosition()["K"]));
-    });
+        // iterates through work locations and appends each location to
+        // the locations array
+        for (var job in work.jobs) {
+            inArray = $.inArray(work.jobs[job].location, locations);
+            if (inArray == -1) {
+                locations.push(work.jobs[job].location);
+                texts.push(work.jobs[job].locationText);
+                urls.push(work.jobs[job].locationURL);
+                images.push(work.jobs[job].locationImage);
+            }
+        }
 
-    google.maps.event.addListener(infobox, "closeclick", function(e) {
-      //removing bouncing animation
-      if (currentMarker && currentMarker.getAnimation() != null) {
-        currentMarker.setAnimation(null);
-      }
-    });
-
-    // this is where the pin actually gets added to the map.
-    // bounds.extend() takes in a map location object
-    bounds.extend(new google.maps.LatLng(lat, lon));
-    // fit the map to the new marker
-    map.fitBounds(bounds);
-    // center the map
-    map.setCenter(bounds.getCenter());
-  }
-
-  /*
-  callback(results, status) makes sure the search returned results for a location.
-  If so, it creates a new map marker for that location.
-  */
-  function callback(results, status) {
-    if (status == google.maps.places.PlacesServiceStatus.OK) {
-      createMapMarkerAndInfoBox(results[0]);
+        return locations;
     }
-  }
 
-  function createLogoPanel(logoPanelDiv) {
-    logoPanelDiv.style.padding = '0px';
-    var controlUI = document.createElement('div');
-    controlUI.style.margin = '10px';
-    logoPanelDiv.appendChild(controlUI);
+    /*
+    createMapMarkerAndInfoBox(placeData) reads Google Places search results to create map pins.
+    placeData is the object returned from search results containing information
+    about a single location.
+    */
+    function createMapMarkerAndInfoBox(placeData) {
 
-    //Map title
-    var titleBar = document.createElement('div');
-    titleBar.style.backgroundColor = '#fef7f7';
-    titleBar.style.cssFloat = 'right';
-    titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">Jorge<br>Asuaje</h1><h2 class="role-map">Web Developer</h2></div>';
-    controlUI.appendChild(titleBar);
+        // The next lines save location data from the search result object to local variables
+        var lat = placeData.geometry.location.lat(); // latitude from the place service
+        var lon = placeData.geometry.location.lng(); // longitude from the place service
+        var name = placeData.formatted_address; // name of the place from the place service
+        var bounds = window.mapBounds; // current boundaries of the map window
 
-  }
 
-  //Function that creates the 'Reser map' button.
-  function createResetButton (resetButtonDiv){
-    resetButtonDiv.style.padding = '0px';
-    var controlUI2 = document.createElement('div');
-    controlUI2.style.margin='10px';
-    controlUI2.style.paddingTop='2px';
-    controlUI2.style.paddingBottom='2px';
-    controlUI2.style.paddingLeft='2px';
-    controlUI2.style.paddingRight='5px';
-    controlUI2.innerHTML = '<div onClick="javascript:map.fitBounds(mapBounds); " OnMouseOver="this.style.cursor=\'pointer\';" ' +
-          'OnMouseOut="this.style.cursor=\'default\';" ><img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
-    resetButtonDiv.appendChild(controlUI2);
-  }
-  /*
-  pinPoster(locations) takes in the array of locations created by locationFinder()
-  and fires off Google place searches for each location
-  */
-  function pinPoster(locations) {
+        // marker is an object with additional data about the pin for a single location
+        var markerIcon = {
+            url: 'images/marker50_opt.png',
+            //The point on the image to measure the anchor from. 0, 0 is the top left.
+            origin: new google.maps.Point(0, 0),
+            //The x y coordinates of the anchor point on the marker. e.g. If your map marker was a drawing pin then the anchor would be the tip of the pin.
+            anchor: new google.maps.Point(5.7, 50)
+        };
 
-    // creates a Google place search service object. PlacesService does the work of
-    // actually searching for location data.
-    var service = new google.maps.places.PlacesService(map);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: placeData.geometry.location,
+            title: name,
+            icon: markerIcon,
+            zIndex: 102
+        });
 
-    // Iterates through the array of locations, creates a search object for each location
-    for (var place in locations) {
+        // infoWindows are the little helper windows that open when you click
+        // or hover over a pin on a map. They usually contain more information
+        // about a location.
+        //Creates the information to go in the pop-up info box.
+        var boxText = document.createElement("div");
+        boxText.style.cssText = pop_up_info;
+        boxText.innerHTML = '<img class="center-block img-responsive marker-photo light-border" src="' + images[locationIndex] +
+            '"><h4 class="pop-up-header"><a href="' + urls[locationIndex] + '" target="_blank">' + name +
+            '</a></h4><p class="pop-up-text">' + texts[locationIndex] + '</p>';
 
-      // the search request object
-      var request = {
-        query: locations[place]
-      };
+        //to track the location in other arrays
+        locationIndex++;
 
-      // Actually searches the Google Maps API for location data and runs the callback
-      // function with the search results after each search.
-      service.textSearch(request, callback);
+        //Sets up the configuration options of the pop-up info box.
+        var infoboxOptions = {
+            content: boxText,
+            disableAutoPan: false,
+            maxWidth: 0,
+            pixelOffset: new google.maps.Size(-241, 0),
+            zIndex: null,
+            boxStyle: {
+                background: "url('images/pop_up_box_top_arrow.png') no-repeat",
+                opacity: 1,
+                width: "330px"
+            },
+            closeBoxMargin: "10px 2px 2px 2px",
+            closeBoxURL: "images/button_close.png",
+            infoBoxClearance: new google.maps.Size(1, 1),
+            isHidden: false,
+            pane: "floatPane",
+            enableEventPropagation: false,
+            disableAutoPan: true
+        };
+
+        //Creates the pop-up infobox, adding the configuration options set above.
+        var infobox = new InfoBox(infoboxOptions);
+
+        // hmmmm, I wonder what this is about...
+        //Add an 'event listener' to the map marker to listen out for when it is clicked.
+        google.maps.event.addListener(marker, "click", function(e) {
+            //adding bouncing animation
+            if (currentMarker && currentMarker.getAnimation() != null) {
+                currentMarker.setAnimation(null);
+            }
+            currentMarker = this;
+            if (this.getAnimation() == null || typeof this.getAnimation() === 'undefined') {
+                this.setAnimation(google.maps.Animation.BOUNCE);
+            }
+
+            if (currentInfobox) currentInfobox.close();
+            currentInfobox = infobox;
+            //Open the info box.
+            infobox.open(map, this);
+            //Changes the z-index property of the marker to make the marker appear on top of other markers.
+            this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
+            //Zooms the map.
+            map.setZoom(11);
+            //Sets the marker to be the center of the map.
+            map.setCenter(new google.maps.LatLng(marker.getPosition()["G"] - 0.035, marker.getPosition()["K"]));
+        });
+
+        google.maps.event.addListener(infobox, "closeclick", function(e) {
+            //removing bouncing animation
+            if (currentMarker && currentMarker.getAnimation() != null) {
+                currentMarker.setAnimation(null);
+            }
+        });
+
+        // this is where the pin actually gets added to the map.
+        // bounds.extend() takes in a map location object
+        bounds.extend(new google.maps.LatLng(lat, lon));
+        // fit the map to the new marker
+        map.fitBounds(bounds);
+        // center the map
+        map.setCenter(bounds.getCenter());
+        initialCenter = map.getCenter();
     }
-  }
 
-  // Sets the boundaries of the map based on pin locations
-  window.mapBounds = new google.maps.LatLngBounds();
+    /*
+    callback(results, status) makes sure the search returned results for a location.
+    If so, it creates a new map marker for that location.
+    */
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            createMapMarkerAndInfoBox(results[0]);
+        }
+    }
 
-  // locations is an array of location strings returned from locationFinder()
-  locations = locationFinder();
+    function createLogoPanel(logoPanelDiv) {
+        logoPanelDiv.style.padding = '0px';
+        var controlUI = document.createElement('div');
+        controlUI.style.margin = '10px';
+        logoPanelDiv.appendChild(controlUI);
 
-  // pinPoster(locations) creates pins on the map for each location in
-  // the locations array
-  pinPoster(locations);
+        //Map title
+        var titleBar = document.createElement('div');
+        titleBar.style.backgroundColor = '#fef7f7';
+        titleBar.style.cssFloat = 'right';
+        titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">Jorge<br>Asuaje</h1><h2 class="role-map">Web Developer</h2></div>';
+        controlUI.appendChild(titleBar);
+
+    }
+
+    //Function that creates the 'Reser map' button.
+    function createResetButton(resetButtonDiv) {
+            resetButtonDiv.style.padding = '0px';
+            var controlUI2 = document.createElement('div');
+            controlUI2.style.margin = '10px';
+            controlUI2.style.paddingTop = '2px';
+            controlUI2.style.paddingBottom = '2px';
+            controlUI2.style.paddingLeft = '2px';
+            controlUI2.style.paddingRight = '5px';
+            controlUI2.innerHTML = '<div onClick="javascript:map.setZoom(3); map.setCenter(initialCenter);" OnMouseOver="this.style.cursor=\'pointer\';" ' +
+                'OnMouseOut="this.style.cursor=\'default\';" ><img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
+            resetButtonDiv.appendChild(controlUI2);
+        }
+        /*
+        pinPoster(locations) takes in the array of locations created by locationFinder()
+        and fires off Google place searches for each location
+        */
+    function pinPoster(locations) {
+
+        // creates a Google place search service object. PlacesService does the work of
+        // actually searching for location data.
+        var service = new google.maps.places.PlacesService(map);
+
+        // Iterates through the array of locations, creates a search object for each location
+        for (var place in locations) {
+
+            // the search request object
+            var request = {
+                query: locations[place]
+            };
+
+            // Actually searches the Google Maps API for location data and runs the callback
+            // function with the search results after each search.
+            service.textSearch(request, callback);
+        }
+    }
+
+    // Sets the boundaries of the map based on pin locations
+    window.mapBounds = new google.maps.LatLngBounds();
+
+    // locations is an array of location strings returned from locationFinder()
+    locations = locationFinder();
+
+    // pinPoster(locations) creates pins on the map for each location in
+    // the locations array
+    pinPoster(locations);
 
 }
 
@@ -487,6 +488,7 @@ window.addEventListener('load', initializeMap);
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
 window.addEventListener('resize', function(e) {
-  // Make sure the map bounds get updated on page resize
-  map.fitBounds(mapBounds);
+    // Make sure the map bounds get updated on page resize
+    map.fitBounds(mapBounds);
+    initialCenter = map.getCenter();
 });
