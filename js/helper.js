@@ -223,6 +223,10 @@ function initializeMap() {
   var logoPanelDiv = document.createElement('div');
   var mapLogoPanel = new createLogoPanel(logoPanelDiv, map);
 
+  //Create the reset map button.
+  var resetButtonDiv = document.createElement('div');
+  var mapResetButton = new createResetButton(resetButtonDiv, map);
+
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
@@ -246,6 +250,7 @@ function initializeMap() {
 
   //Add the control panel and reset button (created previously) to the map.
   map.controls[google.maps.ControlPosition.RIGHT_TOP].push(logoPanelDiv);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(resetButtonDiv);
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -411,7 +416,6 @@ function initializeMap() {
   function createLogoPanel(logoPanelDiv) {
     logoPanelDiv.style.padding = '0px';
     var controlUI = document.createElement('div');
-    controlUI.style.border = '0px solid white';
     controlUI.style.margin = '10px';
     logoPanelDiv.appendChild(controlUI);
 
@@ -419,11 +423,24 @@ function initializeMap() {
     var titleBar = document.createElement('div');
     titleBar.style.backgroundColor = '#fef7f7';
     titleBar.style.cssFloat = 'right';
-    titleBar.innerHTML = '<img class="img-responsive" src="images/mapLogo.png"/>';
+    titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">Jorge<br>Asuaje</h1><h2 class="role-map">Web Developer</h2></div>';
     controlUI.appendChild(titleBar);
 
   }
 
+  //Function that creates the 'Reser map' button.
+  function createResetButton (resetButtonDiv){
+    resetButtonDiv.style.padding = '0px';
+    var controlUI2 = document.createElement('div');
+    controlUI2.style.margin='10px';
+    controlUI2.style.paddingTop='2px';
+    controlUI2.style.paddingBottom='2px';
+    controlUI2.style.paddingLeft='2px';
+    controlUI2.style.paddingRight='5px';
+    controlUI2.innerHTML = '<div onClick="javascript:map.fitBounds(mapBounds); " OnMouseOver="this.style.cursor=\'pointer\';" ' +
+          'OnMouseOut="this.style.cursor=\'default\';" ><img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
+    resetButtonDiv.appendChild(controlUI2);
+  }
   /*
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
