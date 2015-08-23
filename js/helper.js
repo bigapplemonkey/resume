@@ -32,12 +32,14 @@ var HTMLskills = '<li class="skill-item flex-box"><span class="rating-text text-
     '<span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
     '<span class="entypo-thumbs-up rating-icon"></span></div></li>';
 
+
 var HTMLworkStart = '<div class="work-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
 var HTMLworkEmployer = '<a class="entry-title" href="%data%" target="_blank">%data%';
 var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%data%</div>';
 var HTMLworkLocation = '<div class="location-text flex-item"><span class="entypo-location location-icon"></span>%data%</div>';
 var HTMLworkDescription = '<p><br><br>%data%</p>';
+
 
 var HTMLprojectStart = '<div class="project-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
 var HTMLprojectTitle = '<a class="flex-item entry-title" href="%data%" target="_blank">%data%</a>';
@@ -47,6 +49,7 @@ var HTMLprojectImage = '<img class="img-responsive project-photo center-block li
 var HTMLprojectImageWithCaption = '<div class="photo-with-caption effect light-border center-block"><p class="caption-text">%data%</p>' +
     '<img class="photo-effect limit-image img-responsive" src="%data%" alt="Project Photo"/></div>'
 
+
 var HTMLschoolStart = '<div class="education-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
 var HTMLschoolName = '<a class="flex-item entry-title" href="%data%" target="_blank">%data%';
 var HTMLschoolDegree = ' - %data%</a>';
@@ -54,12 +57,14 @@ var HTMLschoolMajor = '<div class="flex-item"><em>Major: %data%</em></div>';
 var HTMLschoolLocation = '<div class="location-text flex-item"><span class="entypo-location location-icon"></span>%data%</div>';
 var HTMLschoolDates = '<div class="date-text flex-item">%data%</div>';
 
+
 var HTMLonlineSchoolStart = '<div class="col-xs-12 col-sm-9 online-title"><h3>Online Classes</h3></div><div class="hidden-xs col-sm-3"></div>';
 var HTMLonlineClasses = '<div class="online-education-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
 var HTMLonlineTitle = '<a class="entry-title" href="%data%" target="_blank">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text flex-item">%data%</div>';
 var HTMLonlineURL = '<br><a class="example-link" href="%data%">%data%</a>';
+
 
 var HTMLfooterStart = '<div class="row"><div class="col-xs-4 col-sm-2 text-left footer-name">' +
     '<a href="#main"><h1 class="text-uppercase bottom-mark">%data%</h1></a></div><div class="col-xs-8 col-sm-3 pull-right">' +
@@ -74,7 +79,6 @@ var HTMLfooterLinkedin = '<li class="social-contact-item"><a href="https://www.l
 
 var internationalizeButton = '<button>Internationalize</button>';
 var googleMap = '<div id="map" class="col-sm-12 light-border"></div>';
-
 
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
@@ -103,7 +107,6 @@ $(document).click(function(loc) {
     logClicks(loc.pageX, loc.pageY);
 });
 
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
@@ -113,8 +116,6 @@ var map; // declares a global map variable
 var currentMarker; //declares a global marker to keep track of the selected marker
 var currentInfobox; //declares a global infobox to keep track of the clicked infobox
 var initialCenter; //for reset purposes
-//style for the pop-up infobox.
-var pop_up_info = 'border: 1px solid #ccc; background-color: #ffffff; padding: 16px; margin-top: 8px;';
 
 /*
 Start here! initializeMap() is called when page is loaded.
@@ -208,15 +209,11 @@ function initializeMap() {
         //commented in case I decide to disable in the future
         // disableDefaultUI: true,
         zoom: mapZoom,
-        //The type of map. In addition to ROADMAP, the other 'premade' map styles are SATELLITE, TERRAIN and HYBRID.
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         maxZoom: mapZoomMax,
         minZoom: mapZoomMin,
         panControl: true,
         mapTypeControl: false
-            // mapTypeControlOptions: {
-            //   mapTypeIds: ['map_styled']
-            // }
     };
 
     //Create logo panel which appears on the right-hand side.
@@ -241,7 +238,9 @@ function initializeMap() {
     google.maps.event.addListener(map, "zoom_changed", function() {
         var newZoom = map.getZoom();
         if (newZoom < 11) {
-            if (currentInfobox) currentInfobox.close();
+            if (currentInfobox) {
+              currentInfobox.close();
+            }
             if (currentMarker && currentMarker.getAnimation() != null) {
                 currentMarker.setAnimation(null);
             }
@@ -260,16 +259,16 @@ function initializeMap() {
 
         // initializes an empty array
         var locations = [];
-        var inArray; //to check if locations was included
+        var inArray; //to check if location was included
 
-        // adds the location property from bio to the locations array
+        // adds the location and its information from bio to the arrays
         locations.push(bio.contacts.location);
         texts.push(bio.contacts.locationText);
         urls.push(bio.contacts.locationURL);
         images.push(bio.contacts.locationImage);
 
-        // iterates through school locations and appends each location to
-        // the locations array
+        // iterates through school locations and appends each location and
+        // its information to the arrays
         for (var school in education.schools) {
             inArray = $.inArray(education.schools[school].location, locations);
             if (inArray == -1) {
@@ -280,8 +279,8 @@ function initializeMap() {
             }
         }
 
-        // iterates through work locations and appends each location to
-        // the locations array
+        // iterates through work locations and appends each location and
+        // its information to the arrays
         for (var job in work.jobs) {
             inArray = $.inArray(work.jobs[job].location, locations);
             if (inArray == -1) {
@@ -312,9 +311,7 @@ function initializeMap() {
         // marker is an object with additional data about the pin for a single location
         var markerIcon = {
             url: 'images/marker50_opt.png',
-            //The point on the image to measure the anchor from. 0, 0 is the top left.
             origin: new google.maps.Point(0, 0),
-            //The x y coordinates of the anchor point on the marker. e.g. If your map marker was a drawing pin then the anchor would be the tip of the pin.
             anchor: new google.maps.Point(5.7, 50)
         };
 
@@ -329,9 +326,10 @@ function initializeMap() {
         // infoWindows are the little helper windows that open when you click
         // or hover over a pin on a map. They usually contain more information
         // about a location.
+
         //Creates the information to go in the pop-up info box.
         var boxText = document.createElement("div");
-        boxText.style.cssText = pop_up_info;
+        boxText.className = 'pop-up';
         boxText.innerHTML = '<img class="center-block img-responsive marker-photo light-border" src="' + images[locationIndex] +
             '"><h4 class="pop-up-header"><a href="' + urls[locationIndex] + '" target="_blank">' + name +
             '</a></h4><p class="pop-up-text">' + texts[locationIndex] + '</p>';
@@ -375,7 +373,9 @@ function initializeMap() {
                 this.setAnimation(google.maps.Animation.BOUNCE);
             }
 
-            if (currentInfobox) currentInfobox.close();
+            if (currentInfobox) {
+              currentInfobox.close();
+            }
             currentInfobox = infobox;
             //Open the info box.
             infobox.open(map, this);
@@ -383,7 +383,7 @@ function initializeMap() {
             this.setZIndex(google.maps.Marker.MAX_ZINDEX + 1);
             //Zooms the map.
             map.setZoom(11);
-            //Sets the marker to be the center of the map.
+            //Sets the marker to be the center of the map with a bit of offset for infobox.
             map.setCenter(new google.maps.LatLng(marker.getPosition()["G"] - 0.035, marker.getPosition()["K"]));
         });
 
@@ -424,7 +424,8 @@ function initializeMap() {
         var titleBar = document.createElement('div');
         titleBar.style.backgroundColor = '#fef7f7';
         titleBar.style.cssFloat = 'right';
-        titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">Jorge<br>Asuaje</h1><h2 class="role-map">Web Developer</h2></div>';
+        titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">' +
+            bio.name.replace(' ', '<br>') + '</h1><h2 class="role-map">' + bio.role +'</h2></div>';
         controlUI.appendChild(titleBar);
 
     }
@@ -433,13 +434,8 @@ function initializeMap() {
     function createResetButton(resetButtonDiv) {
             resetButtonDiv.style.padding = '0px';
             var controlUI2 = document.createElement('div');
-            controlUI2.style.margin = '10px';
-            controlUI2.style.paddingTop = '2px';
-            controlUI2.style.paddingBottom = '2px';
-            controlUI2.style.paddingLeft = '2px';
-            controlUI2.style.paddingRight = '5px';
-            controlUI2.innerHTML = '<div onClick="javascript:map.setZoom(3); map.setCenter(initialCenter);" OnMouseOver="this.style.cursor=\'pointer\';" ' +
-                'OnMouseOut="this.style.cursor=\'default\';" ><img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
+            controlUI2.innerHTML = '<div class="reset-container" onClick="javascript:map.setZoom(3); map.setCenter(initialCenter);" >' +
+                '<img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
             resetButtonDiv.appendChild(controlUI2);
         }
         /*

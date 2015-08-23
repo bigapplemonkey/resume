@@ -12,7 +12,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-
+/*hack to prevent content shifting when a modal opens*/
 html {
   overflow-y: scroll;
 }
@@ -21,7 +21,6 @@ body {
   background-color: #fef7f7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /*text-rendering: optimizeLegibility;*/
 }
 
 em {
@@ -35,8 +34,8 @@ h1 {
 
 h2 {
   font-size: 1.5em;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 h3 {
@@ -101,7 +100,7 @@ li:last-child {
 }
 
 hr {
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .flex-box {
@@ -366,6 +365,17 @@ paper-tabs {
   margin-right: 23px;
 }
 
+.pop-up {
+  border-radius: 3px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 16px;
+  margin-top: 8px;
+  -webkit-box-shadow: 2px 2px 5px 1px rgba(119, 119, 119, 0.45);
+  -moz-box-shadow:    2px 2px 5px 1px rgba(119, 119, 119, 0.45);
+  box-shadow:         2px 2px 5px 1px rgba(119, 119, 119, 0.45);
+}
+
 .pop-up-text {
   font-size: 12px;
   margin: 0;
@@ -402,6 +412,15 @@ paper-tabs {
 .role-map {
   margin-top: 2px;
   font-size: 1.2em;
+}
+
+.reset-container {
+  margin: 10px;
+  padding: 2px 5px 2px 2px;
+}
+
+.reset-container:hover {
+  cursor: pointer;
 }
 
 .reset-image {
@@ -503,8 +522,6 @@ paper-tabs {
 }
 
 .photo-effect {
-  /*height: -webkit-calc(100% + 40px);
-  height: -moz-calc(100% + 40px);*/
   height: 173px;
   padding-top: 40px;
   position: absolute;

@@ -31,7 +31,7 @@ var education = {
         "name": "NJIT",
         "location": "Newark, NJ",
         "degree": "Masters",
-        "majors": ["CS"],
+        "majors": ["Computer Science"],
         "dates": "2014",
         "url": "https://www.njit.edu",
         "locationImage": "http://placehold.it/200x100/F6EDED",
@@ -110,8 +110,6 @@ var projects = {
 
 bio.display = function() {
 
-    // $('title').append(bio.name + "'s Resume");
-
     var formattedBio = HTMLbioPic.replace('%data%', bio.bioPic);
     formattedBio = formattedBio + HTMLheaderName.replace('%data%', bio.name.replace(' ', '<br>'));
     formattedBio = formattedBio + HTMLheaderRole.replace('%data%', bio.role);
@@ -170,6 +168,7 @@ projects.display = function() {
         formattedProject = formattedProject + HTMLprojectDates.replace('%data%', projects.projects[i].dates);
         formattedProject = formattedProject + HTMLprojectDescription.replace('%data%', projects.projects[i].description);
         for (j in projects.projects[i].images) {
+            // keeping this in case I want to go back to previous image format
             // formattedProject = formattedProject + HTMLprojectImage.replace('%data%', projects.projects[i].images[j]);
             formattedProject = formattedProject + HTMLprojectImageWithCaption.replace('%data%', projects.projects[i].captions[j]).replace('%data%', projects.projects[i].images[j]);
         }
@@ -190,9 +189,8 @@ education.display = function() {
 
         $('.education-entry:last').append(formattedEdu);
     }
+
     $('#education').append(HTMLonlineSchoolStart);
-
-
     for (i in education.onlineCourses) {
         $('#education').append(HTMLonlineClasses);
         formattedEdu = HTMLonlineTitle.replace('%data%', education.onlineCourses[i].schoolUrl).replace('%data%', education.onlineCourses[i].title);
@@ -204,12 +202,14 @@ education.display = function() {
     $('.empty-space:last').replaceWith('<div class="col-xs-12 hidden-xs"><hr></div>');
 }
 
+//adding all the resume markup
 bio.display();
 work.display();
 projects.display();
 education.display();
 $('#mapDiv').append(googleMap);
 
+//highlighting in blue title of section been scrolled
 $(window).on('scroll', function() {
     var scrollTop = $(this).scrollTop();
     $('.section-title').each(function() {
@@ -226,6 +226,7 @@ $(window).on('scroll', function() {
 });
 
 $(document).ready(function() {
+    //smooth transition on page junps
     $('a[href^="#"]').on('click', function(e) {
         e.preventDefault();
 
@@ -239,7 +240,8 @@ $(document).ready(function() {
         });
     });
 
-    $('.project-photo, .photo-effect').on('click', function() {
+    //inserting image clicked into modal
+    $('.photo-effect').on('click', function() {
         var src = $(this).attr('src');
         var theImage = new Image();
         theImage.src = src;
@@ -249,15 +251,13 @@ $(document).ready(function() {
 
         //hack to prevent content shifting when a modal opens
         var bodyRightPadding = parseInt($('body').css('padding-right'), 10);
-        if(bodyRightPadding > 0) $('body').css('padding-right', '0')
+        if(bodyRightPadding > 0) $('body').css('padding-right', '0');
 
         $('#myModal .modal-body').html(theImage);
         $('#myModal .modal-body img').attr('id', 'modalImage');
         $('#modalImage').addClass('img-responsive center-block');
 
-
-
-
+        //safari doesn't seem to process image width on load, so in case browser is safari
         var isSafari = navigator.vendor.indexOf('Apple') == 0 && /\sSafari\//.test(navigator.userAgent); // true or false
         if (!isSafari) $('.modal-dialog').css('width', imageWidth);
 
