@@ -24,7 +24,7 @@ var bio = {
         "puppeteer master": 0
     }],
     "bioPic": "images/myPhoto_2x.jpg"
-}
+};
 
 var education = {
     "schools": [{
@@ -63,7 +63,7 @@ var education = {
         "dates": "May 2015",
         "url": "http://example.com"
     }]
-}
+};
 
 var work = {
     "jobs": [{
@@ -87,7 +87,7 @@ var work = {
         "locationURL": "https://en.wikipedia.org/wiki/Maracaibo",
         "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
     }]
-}
+};
 
 var projects = {
     "projects": [{
@@ -105,7 +105,7 @@ var projects = {
         "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
         "url": "https://github.com/bigapplemonkey"
     }]
-}
+};
 
 
 bio.display = function() {
@@ -136,20 +136,24 @@ bio.display = function() {
     $('#footerContacts').append(formattedBio);
 
     $('#skillSet').append(HTMLskillsStart);
-    for (i in bio.skills) {
+
+
+    var len = bio.skills.length;
+    for (var i = 0; i < len; i++) {
         var skill = Object.keys(bio.skills[i])[0];
         var skillRating = bio.skills[i][skill] <= 5 ? bio.skills[i][skill] : 5;
         formattedBio = HTMLskills.replace('%data%', skill);
         //adding thumbs-up rating
-        for (i = 0; i < skillRating; i++) {
+        for (var j = 0; j < skillRating; j++) {
             formattedBio = formattedBio.replace('<span class="entypo-thumbs-up rating-icon">', '<span class="entypo-thumbs-up rating-icon rated">');
         }
         $('#skills').append(formattedBio);
     }
-}
+};
 
 work.display = function() {
-    for (i in work.jobs) {
+    var len = work.jobs.length;
+    for (var i = 0; i < len; i++) {
         $('#workExperience').append(HTMLworkStart);
         var formattedWork = HTMLworkEmployer.replace('%data%', work.jobs[i].url).replace('%data%', work.jobs[i].employer);
         formattedWork = formattedWork + HTMLworkTitle.replace('%data%', work.jobs[i].title);
@@ -159,15 +163,17 @@ work.display = function() {
         $('.work-entry:last').append(formattedWork);
     }
     $('.empty-space:last').replaceWith('<div class="col-xs-12"><hr></div>');
-}
+};
 
 projects.display = function() {
-    for (i in projects.projects) {
+    var len = projects.projects.length;
+    for (var i = 0; i < len; i++) {
         $('#projects').append(HTMLprojectStart);
         var formattedProject = HTMLprojectTitle.replace('%data%', projects.projects[i].url).replace('%data%', projects.projects[i].title);
         formattedProject = formattedProject + HTMLprojectDates.replace('%data%', projects.projects[i].dates);
         formattedProject = formattedProject + HTMLprojectDescription.replace('%data%', projects.projects[i].description);
-        for (j in projects.projects[i].images) {
+        var len2 = projects.projects[i].images.length;
+        for (var j = 0; j < len2; j++) {
             // keeping this in case I want to go back to previous image format
             // formattedProject = formattedProject + HTMLprojectImage.replace('%data%', projects.projects[i].images[j]);
             formattedProject = formattedProject + HTMLprojectImageWithCaption.replace('%data%', projects.projects[i].captions[j]).replace('%data%', projects.projects[i].images[j]);
@@ -175,11 +181,12 @@ projects.display = function() {
         $('.project-entry:last').append(formattedProject);
     }
     $('.empty-space:last').replaceWith('<div class="col-xs-12"><hr></div>');
-}
+};
 
 education.display = function() {
     var formattedEdu;
-    for (i in education.schools) {
+    var len = education.schools.length;
+    for (var i = 0; i < len; i++) {
         $('#education').append(HTMLschoolStart);
         formattedEdu = HTMLschoolName.replace('%data%', education.schools[i].url).replace('%data%', education.schools[i].name);
         formattedEdu = formattedEdu + HTMLschoolDegree.replace('%data%', education.schools[i].degree);
@@ -191,16 +198,17 @@ education.display = function() {
     }
 
     $('#education').append(HTMLonlineSchoolStart);
-    for (i in education.onlineCourses) {
+    len = education.onlineCourses.length;
+    for (var k = 0; k < len; k++) {
         $('#education').append(HTMLonlineClasses);
-        formattedEdu = HTMLonlineTitle.replace('%data%', education.onlineCourses[i].schoolUrl).replace('%data%', education.onlineCourses[i].title);
-        formattedEdu = formattedEdu + HTMLonlineSchool.replace('%data%', education.onlineCourses[i].school);
-        formattedEdu = formattedEdu + HTMLonlineDates.replace('%data%', education.onlineCourses[i].dates);
-        formattedEdu = formattedEdu + HTMLonlineURL.replace('%data%', education.onlineCourses[i].url).replace('%data%', education.onlineCourses[i].url);
+        formattedEdu = HTMLonlineTitle.replace('%data%', education.onlineCourses[k].schoolUrl).replace('%data%', education.onlineCourses[k].title);
+        formattedEdu = formattedEdu + HTMLonlineSchool.replace('%data%', education.onlineCourses[k].school);
+        formattedEdu = formattedEdu + HTMLonlineDates.replace('%data%', education.onlineCourses[k].dates);
+        formattedEdu = formattedEdu + HTMLonlineURL.replace('%data%', education.onlineCourses[k].url).replace('%data%', education.onlineCourses[k].url);
         $('.online-education-entry:last').append(formattedEdu);
     }
     $('.empty-space:last').replaceWith('<div class="col-xs-12 hidden-xs"><hr></div>');
-}
+};
 
 //adding all the resume markup
 bio.display();
@@ -214,7 +222,6 @@ $(window).on('scroll', function() {
     var scrollTop = $(this).scrollTop();
     $('.section-title').each(function() {
         var topDistance = $(this).offset().top;
-        var height = $(this).height();
         var distance = topDistance - scrollTop;
         var offset = 300;
         if (distance <= offset && distance >= -20) {
@@ -245,7 +252,7 @@ $(document).ready(function() {
         var src = $(this).attr('src');
         var theImage = new Image();
         theImage.src = src;
-        var imageWidth = theImage.width
+        var imageWidth = theImage.width;
 
         $('#myModal').modal();
 
@@ -258,7 +265,7 @@ $(document).ready(function() {
         $('#modalImage').addClass('img-responsive center-block');
 
         //safari doesn't seem to process image width on load, so in case browser is safari
-        var isSafari = navigator.vendor.indexOf('Apple') == 0 && /\sSafari\//.test(navigator.userAgent); // true or false
+        var isSafari = navigator.vendor.indexOf('Apple') === 0 && /\sSafari\//.test(navigator.userAgent); // true or false
         if (!isSafari) $('.modal-dialog').css('width', imageWidth);
 
         $('#myModal').on('hidden.bs.modal', function() {
@@ -267,4 +274,4 @@ $(document).ready(function() {
     });
 
 
-})
+});

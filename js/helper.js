@@ -47,7 +47,7 @@ var HTMLprojectDates = '<div class="date-text flex-item">%data%</div>';
 var HTMLprojectDescription = '<p class="project-text"><br>%data%</p>';
 var HTMLprojectImage = '<img class="img-responsive project-photo center-block light-border" src="%data%" alt="Project photo">';
 var HTMLprojectImageWithCaption = '<div class="photo-with-caption effect light-border center-block"><p class="caption-text">%data%</p>' +
-    '<img class="photo-effect limit-image img-responsive" src="%data%" alt="Project Photo"/></div>'
+    '<img class="photo-effect limit-image img-responsive" src="%data%" alt="Project Photo"/></div>';
 
 
 var HTMLschoolStart = '<div class="education-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
@@ -68,7 +68,7 @@ var HTMLonlineURL = '<br><a class="example-link" href="%data%">%data%</a>';
 
 var HTMLfooterStart = '<div class="row"><div class="col-xs-4 col-sm-2 text-left footer-name">' +
     '<a href="#main"><h1 class="text-uppercase bottom-mark">%data%</h1></a></div><div class="col-xs-8 col-sm-3 pull-right">' +
-    '<ul id="footerContacts" class="flex-box"></ul></div></div>'
+    '<ul id="footerContacts" class="flex-box"></ul></div></div>';
 var HTMLfooterEmail = '<li class="contact-item hidden-xs text-uppercase"><a href="mailto:%data%" class="text-muted">%data%</a></li>';
 var HTMLfooterMobile = '<li class="contact-item hidden-xs"><a href="tel:%data%" class="text-muted">%data%</a></li>';
 var HTMLfooterLocation = '<li class="contact-item hidden-xs text-uppercase text-muted">%data%</li>';
@@ -241,7 +241,7 @@ function initializeMap() {
             if (currentInfobox) {
               currentInfobox.close();
             }
-            if (currentMarker && currentMarker.getAnimation() != null) {
+            if (currentMarker && currentMarker.getAnimation() !== null) {
                 currentMarker.setAnimation(null);
             }
         }
@@ -269,7 +269,8 @@ function initializeMap() {
 
         // iterates through school locations and appends each location and
         // its information to the arrays
-        for (var school in education.schools) {
+        var len = education.schools.length;
+        for (var school = 0; school < len; school++) {
             inArray = $.inArray(education.schools[school].location, locations);
             if (inArray == -1) {
                 locations.push(education.schools[school].location);
@@ -281,7 +282,8 @@ function initializeMap() {
 
         // iterates through work locations and appends each location and
         // its information to the arrays
-        for (var job in work.jobs) {
+        len = work.jobs.length;
+        for (var job = 0; job < len; job++) {
             inArray = $.inArray(work.jobs[job].location, locations);
             if (inArray == -1) {
                 locations.push(work.jobs[job].location);
@@ -340,7 +342,6 @@ function initializeMap() {
         //Sets up the configuration options of the pop-up info box.
         var infoboxOptions = {
             content: boxText,
-            disableAutoPan: false,
             maxWidth: 0,
             pixelOffset: new google.maps.Size(-241, 0),
             zIndex: null,
@@ -365,11 +366,11 @@ function initializeMap() {
         //Add an 'event listener' to the map marker to listen out for when it is clicked.
         google.maps.event.addListener(marker, "click", function(e) {
             //adding bouncing animation
-            if (currentMarker && currentMarker.getAnimation() != null) {
+            if (currentMarker && currentMarker.getAnimation() !== null) {
                 currentMarker.setAnimation(null);
             }
             currentMarker = this;
-            if (this.getAnimation() == null || typeof this.getAnimation() === 'undefined') {
+            if (this.getAnimation() === null || typeof this.getAnimation() === 'undefined') {
                 this.setAnimation(google.maps.Animation.BOUNCE);
             }
 
@@ -384,12 +385,12 @@ function initializeMap() {
             //Zooms the map.
             map.setZoom(11);
             //Sets the marker to be the center of the map with a bit of offset for infobox.
-            map.setCenter(new google.maps.LatLng(marker.getPosition()["G"] - 0.035, marker.getPosition()["K"]));
+            map.setCenter(new google.maps.LatLng(marker.getPosition().G - 0.035, marker.getPosition().K));
         });
 
         google.maps.event.addListener(infobox, "closeclick", function(e) {
             //removing bouncing animation
-            if (currentMarker && currentMarker.getAnimation() != null) {
+            if (currentMarker && currentMarker.getAnimation() !== null) {
                 currentMarker.setAnimation(null);
             }
         });
@@ -449,7 +450,8 @@ function initializeMap() {
         var service = new google.maps.places.PlacesService(map);
 
         // Iterates through the array of locations, creates a search object for each location
-        for (var place in locations) {
+        var len = locations.length;
+        for (var place = 0; place < len; place++) {
 
             // the search request object
             var request = {
