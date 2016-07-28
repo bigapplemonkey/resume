@@ -177,6 +177,7 @@ hr {
 }
 
 .hightlight {
+  will-change: color;
   color: #3369e8;
   -webkit-transition: color 0.5s ease;
   -moz-transition: color 0.5s ease;
