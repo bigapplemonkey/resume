@@ -239,7 +239,7 @@ function initializeMap() {
         var newZoom = map.getZoom();
         if (newZoom < 11) {
             if (currentInfobox) {
-              currentInfobox.close();
+                currentInfobox.close();
             }
             if (currentMarker && currentMarker.getAnimation() !== null) {
                 currentMarker.setAnimation(null);
@@ -262,34 +262,37 @@ function initializeMap() {
         var inArray; //to check if location was included
 
         // adds the location and its information from bio to the arrays
-        locations.push(bio.contacts.location);
-        texts.push(bio.contacts.locationText);
-        urls.push(bio.contacts.locationURL);
-        images.push(bio.contacts.locationImage);
+        var contacts = octopus.getContacts();
+        locations.push(contacts.location);
+        texts.push(contacts.locationText);
+        urls.push(contacts.locationURL);
+        images.push(contacts.locationImage);
 
         // iterates through school locations and appends each location and
         // its information to the arrays
-        var len = education.schools.length;
+        var schools = octopus.getSchools();
+        var len = schools.length;
         for (var school = 0; school < len; school++) {
-            inArray = $.inArray(education.schools[school].location, locations);
+            inArray = $.inArray(schools[school].location, locations);
             if (inArray == -1) {
-                locations.push(education.schools[school].location);
-                texts.push(education.schools[school].locationText);
-                urls.push(education.schools[school].locationURL);
-                images.push(education.schools[school].locationImage);
+                locations.push(schools[school].location);
+                texts.push(schools[school].locationText);
+                urls.push(schools[school].locationURL);
+                images.push(schools[school].locationImage);
             }
         }
 
         // iterates through work locations and appends each location and
         // its information to the arrays
-        len = work.jobs.length;
+        var jobs = octopus.getJobs();
+        len = jobs.length;
         for (var job = 0; job < len; job++) {
-            inArray = $.inArray(work.jobs[job].location, locations);
+            inArray = $.inArray(jobs[job].location, locations);
             if (inArray == -1) {
-                locations.push(work.jobs[job].location);
-                texts.push(work.jobs[job].locationText);
-                urls.push(work.jobs[job].locationURL);
-                images.push(work.jobs[job].locationImage);
+                locations.push(jobs[job].location);
+                texts.push(jobs[job].locationText);
+                urls.push(jobs[job].locationURL);
+                images.push(jobs[job].locationImage);
             }
         }
 
@@ -375,7 +378,7 @@ function initializeMap() {
             }
 
             if (currentInfobox) {
-              currentInfobox.close();
+                currentInfobox.close();
             }
             currentInfobox = infobox;
             //Open the info box.
@@ -425,24 +428,26 @@ function initializeMap() {
         var titleBar = document.createElement('div');
         titleBar.style.backgroundColor = '#fef7f7';
         titleBar.style.cssFloat = 'right';
+
+        var bio = octopus.getBio();
         titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">' +
-            bio.name.replace(' ', '<br>') + '</h1><h2 class="role-map">' + bio.role +'</h2></div>';
+            bio.name.replace(' ', '<br>') + '</h1><h2 class="role-map">' + bio.role + '</h2></div>';
         controlUI.appendChild(titleBar);
 
     }
 
     //Function that creates the 'Reser map' button.
     function createResetButton(resetButtonDiv) {
-            resetButtonDiv.style.padding = '0px';
-            var controlUI2 = document.createElement('div');
-            controlUI2.innerHTML = '<div class="reset-container" onClick="javascript:map.setZoom(3); map.setCenter(initialCenter);" >' +
-                '<img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
-            resetButtonDiv.appendChild(controlUI2);
-        }
-        /*
-        pinPoster(locations) takes in the array of locations created by locationFinder()
-        and fires off Google place searches for each location
-        */
+        resetButtonDiv.style.padding = '0px';
+        var controlUI2 = document.createElement('div');
+        controlUI2.innerHTML = '<div class="reset-container" onClick="javascript:map.setZoom(3); map.setCenter(initialCenter);" >' +
+            '<img class="img-responsive reset-image" src="images/restart_opt.png"/></div>';
+        resetButtonDiv.appendChild(controlUI2);
+    }
+    /*
+    pinPoster(locations) takes in the array of locations created by locationFinder()
+    and fires off Google place searches for each location
+    */
     function pinPoster(locations) {
 
         // creates a Google place search service object. PlacesService does the work of
