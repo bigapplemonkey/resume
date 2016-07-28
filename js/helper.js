@@ -388,7 +388,8 @@ function initializeMap() {
             //Zooms the map.
             map.setZoom(11);
             //Sets the marker to be the center of the map with a bit of offset for infobox.
-            map.setCenter(new google.maps.LatLng(marker.getPosition().G - 0.035, marker.getPosition().K));
+            var position = marker.getPosition();
+            map.setCenter(new google.maps.LatLng(position.lat() - 0.035, position.lng()));
         });
 
         google.maps.event.addListener(infobox, "closeclick", function(e) {
