@@ -45,8 +45,8 @@ var HTMLprojectStart = '<div class="project-entry col-xs-12 col-sm-9"></div><div
 var HTMLprojectTitle = '<a class="flex-item entry-title" href="%data%" target="_blank">%data%</a>';
 var HTMLprojectDates = '<div class="date-text flex-item">%data%</div>';
 var HTMLprojectDescription = '<p class="project-text"><br>%data%</p>';
-var HTMLprojectImage = '<img class="img-responsive project-photo center-block light-border" src="%data%" alt="Project photo">';
-var HTMLprojectImageWithCaption = '<div class="photo-with-caption effect light-border center-block"><p class="caption-text">%data%</p>' +
+var HTMLprojectImage = '<img class="img-responsive project-photo center-block" src="%data%" alt="Project photo">';
+var HTMLprojectImageWithCaption = '<div class="photo-with-caption effect center-block"><p class="caption-text">%data%</p>' +
     '<img class="photo-effect limit-image img-responsive" src="%data%" alt="Project Photo"/></div>';
 
 
@@ -78,7 +78,7 @@ var HTMLfooterLinkedin = '<li class="social-contact-item"><a href="https://www.l
 
 
 var internationalizeButton = '<button>Internationalize</button>';
-var googleMap = '<div id="map" class="col-sm-12 light-border"></div>';
+var googleMap = '<div id="map" class="col-sm-12"></div>';
 
 /*
 The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
@@ -121,13 +121,9 @@ var initialCenter; //for reset purposes
 Start here! initializeMap() is called when page is loaded.
 */
 function initializeMap() {
-
+    'use strict';
     var locations = [];
-    //arrays with data to display for each location
-    var texts = [];
-    var urls = [];
-    var images = [];
-    var locationIndex = 0; //index to iterate through locations
+    var locationsInfo = {};
 
     //Object describing map style.
     var styleMap = [{
@@ -263,10 +259,12 @@ function initializeMap() {
 
         // adds the location and its information from bio to the arrays
         var contacts = octopus.getContacts();
+        locationsInfo[contacts.location.split(',')[0].trim()] = {
+            text: contacts.locationText,
+            url: contacts.locationURL,
+            image: contacts.locationImage
+        };
         locations.push(contacts.location);
-        texts.push(contacts.locationText);
-        urls.push(contacts.locationURL);
-        images.push(contacts.locationImage);
 
         // iterates through school locations and appends each location and
         // its information to the arrays
@@ -275,10 +273,12 @@ function initializeMap() {
         for (var school = 0; school < len; school++) {
             inArray = $.inArray(schools[school].location, locations);
             if (inArray == -1) {
+                locationsInfo[schools[school].location.split(',')[0].trim()] = {
+                    text: schools[school].locationText,
+                    url: schools[school].locationURL,
+                    image: schools[school].locationImage
+                };
                 locations.push(schools[school].location);
-                texts.push(schools[school].locationText);
-                urls.push(schools[school].locationURL);
-                images.push(schools[school].locationImage);
             }
         }
 
@@ -289,13 +289,14 @@ function initializeMap() {
         for (var job = 0; job < len; job++) {
             inArray = $.inArray(jobs[job].location, locations);
             if (inArray == -1) {
+                locationsInfo[jobs[job].location.split(',')[0].trim()] = {
+                    text: jobs[job].locationText,
+                    url: jobs[job].locationURL,
+                    image: jobs[job].locationImage
+                };
                 locations.push(jobs[job].location);
-                texts.push(jobs[job].locationText);
-                urls.push(jobs[job].locationURL);
-                images.push(jobs[job].locationImage);
             }
         }
-
         return locations;
     }
 
@@ -305,12 +306,15 @@ function initializeMap() {
     about a single location.
     */
     function createMapMarkerAndInfoBox(placeData) {
-
         // The next lines save location data from the search result object to local variables
         var lat = placeData.geometry.location.lat(); // latitude from the place service
         var lon = placeData.geometry.location.lng(); // longitude from the place service
-        var name = placeData.formatted_address; // name of the place from the place service
+        var name = placeData.name; // name of the place from the place service
+        var formattedName = placeData.formatted_address; // name of the place from the place service
         var bounds = window.mapBounds; // current boundaries of the map window
+        var infoUrl = locationsInfo[name].url;
+        var infoImage = placeData.photos ? placeData.photos[0].getUrl({ 'maxWidth': 200, 'maxHeight': 100 }) : locationsInfo[name].image;
+        var infoText = locationsInfo[name].text;
 
 
         // marker is an object with additional data about the pin for a single location
@@ -335,12 +339,9 @@ function initializeMap() {
         //Creates the information to go in the pop-up info box.
         var boxText = document.createElement("div");
         boxText.className = 'pop-up';
-        boxText.innerHTML = '<img class="center-block img-responsive marker-photo light-border" src="' + images[locationIndex] +
-            '"><h4 class="pop-up-header"><a href="' + urls[locationIndex] + '" target="_blank">' + name +
-            '</a></h4><p class="pop-up-text">' + texts[locationIndex] + '</p>';
-
-        //to track the location in other arrays
-        locationIndex++;
+        boxText.innerHTML = '<img class="center-block img-responsive marker-photo" src="' + infoImage +
+            '"><h4 class="pop-up-header"><a href="' + infoUrl + '" target="_blank">' + formattedName +
+            '</a></h4><p class="pop-up-text">' + infoText + '</p>';
 
         //Sets up the configuration options of the pop-up info box.
         var infoboxOptions = {
@@ -431,7 +432,7 @@ function initializeMap() {
         titleBar.style.cssFloat = 'right';
 
         var bio = octopus.getBio();
-        titleBar.innerHTML = '<div class="map-logo light-border box-shadow"><h1 class="text-uppercase name-map">' +
+        titleBar.innerHTML = '<div class="map-logo box-shadow"><h1 class="text-uppercase name-map">' +
             bio.name.replace(' ', '<br>') + '</h1><h2 class="role-map">' + bio.role + '</h2></div>';
         controlUI.appendChild(titleBar);
 
@@ -479,7 +480,6 @@ function initializeMap() {
     // pinPoster(locations) creates pins on the map for each location in
     // the locations array
     pinPoster(locations);
-
 }
 
 /*
