@@ -185,10 +185,6 @@ hr {
   transition: color 0.5s ease;
 }
 
-.light-border {
-  border: 1px solid #ccc;
-}
-
 a.anchor {
   display: block;
   position: relative;
