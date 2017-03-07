@@ -20,17 +20,17 @@ var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%conta
 var HTMLemail = '<li class="flex-item text-uppercase"><a href="mailto:%data%">%data%</a><a class="anchor" id="contactSection"></a></li>';
 var HTMLmobile = '<li class="flex-item text-uppercase"><a href="tel:%data%">%data%</a></li>';
 var HTMLlocation = '<li class="flex-item text-uppercase">%data%</li>';
-var HTMLgithub = '<li class="social-item"><a href="https://github.com/%data%" target="_blank"><span class="entypo-github social-icon"></span></a></li>';
-var HTMLtwitter = '<li class="social-item"><a href="https://twitter.com/%data%" target="_blank"><span class="entypo-twitter social-icon"></span></a></li>';
-var HTMLlinkedin = '<li class="social-item"><a href="https://www.linkedin.com/in/jorgeasuaje" target="_blank"><span class="entypo-linkedin-circled social-icon"></span></a></li>';
+var HTMLgithub = '<li class="social-item"><a href="https://github.com/%data%" target="_blank"><i class="fa fa-github-alt social-icon" aria-hidden="true"></i></a></li>';
+var HTMLtwitter = '<li class="social-item"><a href="https://twitter.com/%data%" target="_blank"><i class="fa fa-twitter social-icon" aria-hidden="true"></i></span></a></li>';
+var HTMLlinkedin = '<li class="social-item"><a href="https://www.linkedin.com/in/jorgeasuaje" target="_blank"><i class="fa fa-linkedin social-icon" aria-hidden="true"></i></span></a></li>';
 var HTMLblog = '<li class="flex-item"><span class="orange-text">blog</span><span class="white-text">%data%</span></li>';
 
 
 var HTMLskillsStart = '<div class="col-xs-12 section-title"><h2>Skills at a Glance</h2></div><div class="col-xs-12"><ul id="skills" class="flex-box"></ul></div><div class="col-xs-12"><hr></div>';
 var HTMLskills = '<li class="skill-item flex-box"><span class="rating-text text-capitalize">%data%</span>' +
-    '<div class="rating-icons"><span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
-    '<span class="entypo-thumbs-up rating-icon"></span><span class="entypo-thumbs-up rating-icon"></span>' +
-    '<span class="entypo-thumbs-up rating-icon"></span></div></li>';
+    '<div class="rating-icons"><i class="fa fa-thumbs-up rating-icon" aria-hidden="true"></i></span><i class="fa fa-thumbs-up rating-icon" aria-hidden="true"></i></span>' +
+    '<i class="fa fa-thumbs-up rating-icon" aria-hidden="true"></i></span><i class="fa fa-thumbs-up rating-icon" aria-hidden="true"></i></span>' +
+    '<i class="fa fa-thumbs-up rating-icon" aria-hidden="true"></i></span></div></li>';
 
 
 var HTMLworkStart = '<div class="work-entry col-xs-12 col-sm-9"></div><div class="hidden-xs col-sm-3 empty-space"></div>';
@@ -72,9 +72,9 @@ var HTMLfooterStart = '<div class="row"><div class="col-xs-4 col-sm-2 text-left 
 var HTMLfooterEmail = '<li class="contact-item hidden-xs text-uppercase"><a href="mailto:%data%" class="text-muted">%data%</a></li>';
 var HTMLfooterMobile = '<li class="contact-item hidden-xs"><a href="tel:%data%" class="text-muted">%data%</a></li>';
 var HTMLfooterLocation = '<li class="contact-item hidden-xs text-uppercase text-muted">%data%</li>';
-var HTMLfooterGithub = '<li class="social-contact-item"><a href="https://github.com/%data%" target="_blank"><span class="entypo-github social-icon text-muted"></span></a></li>';
-var HTMLfooterTwitter = '<li class="social-contact-item"><a href="https://twitter.com/%data%" target="_blank"><span class="entypo-twitter social-icon text-muted"></span></a></li>';
-var HTMLfooterLinkedin = '<li class="social-contact-item"><a href="https://www.linkedin.com/in/%data%" target="_blank"><span class="entypo-linkedin-circled social-icon text-muted"></span></a></li>';
+var HTMLfooterGithub = '<li class="social-contact-item"><a href="https://github.com/%data%" target="_blank"><i class="fa fa-github-alt social-icon text-muted" aria-hidden="true"></i></a></li>';
+var HTMLfooterTwitter = '<li class="social-contact-item"><a href="https://twitter.com/%data%" target="_blank"><i class="fa fa-twitter social-icon text-muted" aria-hidden="true"></i></a></li>';
+var HTMLfooterLinkedin = '<li class="social-contact-item"><a href="https://www.linkedin.com/in/%data%" target="_blank"><i class="fa fa-linkedin social-icon text-muted" aria-hidden="true"></i></a></li>';
 
 
 var internationalizeButton = '<button>Internationalize</button>';

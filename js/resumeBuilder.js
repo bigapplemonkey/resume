@@ -180,7 +180,7 @@ var bioView = {
             formattedBio = HTMLskills.replace('%data%', skill);
             //adding thumbs-up rating
             for (var j = 0; j < skillRating; j++) {
-                formattedBio = formattedBio.replace('<span class="entypo-thumbs-up rating-icon">', '<span class="entypo-thumbs-up rating-icon rated">');
+                formattedBio = formattedBio.replace('<i class="fa fa-thumbs-up rating-icon" aria-hidden="true"></i>', '<i class="fa fa-thumbs-up rating-icon rated" aria-hidden="true"></i>');
             }
             $('#skills').append(formattedBio);
         }
