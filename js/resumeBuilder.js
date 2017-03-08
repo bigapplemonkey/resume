@@ -94,7 +94,7 @@ var model = {
 
     projects: {
         "projects": [{
-            "title": "Galaxian",
+            "title": "GALAXIAN",
             "dates": "2016",
             "description": "Recreation of the classic arcade game Galaxian using a game loop engine. This implementation uses Object-Oriented Javascript and HTML5 Canvas.",
             "images": ["images/project1.jpg", "images/project1b.jpg"],
