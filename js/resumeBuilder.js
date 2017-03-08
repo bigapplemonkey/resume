@@ -94,19 +94,26 @@ var model = {
 
     projects: {
         "projects": [{
-            "title": "Sample Project 1",
-            "dates": "2014",
+            "title": "Galaxian",
+            "dates": "2016",
             "description": "Bacon ipsum dolor amet ham jerky landjaeger frankfurter filet mignon. Turkey kevin pancetta, chicken hamburger corned beef tongue. Pig ham tongue flank short ribs pancetta turducken biltong meatloaf kielbasa alcatra cow t-bone tail. Pig strip steak doner rump drumstick.",
-            "images": ["http://placehold.it/500x300/e7e6e6", "http://placehold.it/500x300/f6eded", "http://placehold.it/500x300/e7e6e6"],
-            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
-            "url": "https://github.com/bigapplemonkey"
+            "images": ["images/project1.jpg"],
+            "captions": ["Tail short loin capicola leberkas meatball."],
+            "url": "https://github.com/bigapplemonkey/Classic-Arcade-Game-Clone"
         }, {
-            "title": "Sample Project 2",
-            "dates": "2014",
+            "title": "CUPCAKE FINDER",
+            "dates": "2016",
             "description": "Bacon ipsum dolor amet ham jerky landjaeger frankfurter filet mignon. Turkey kevin pancetta, chicken hamburger corned beef tongue. Pig ham tongue flank short ribs pancetta turducken biltong meatloaf kielbasa alcatra cow t-bone tail. Pig strip steak doner rump drumstick.",
-            "images": ["http://placehold.it/500x300/e7e6e6", "http://placehold.it/500x300/f6eded"],
-            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
-            "url": "https://github.com/bigapplemonkey"
+            "images": ["images/project2.jpg", "images/project2b.jpg"],
+            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
+            "url": "https://github.com/bigapplemonkey/get-your-cupcakes"
+        }, {
+            "title": "MY FOOD JOURNAL",
+            "dates": "2017",
+            "description": "Bacon ipsum dolor amet ham jerky landjaeger frankfurter filet mignon. Turkey kevin pancetta, chicken hamburger corned beef tongue. Pig ham tongue flank short ribs pancetta turducken biltong meatloaf kielbasa alcatra cow t-bone tail. Pig strip steak doner rump drumstick.",
+            "images": ["images/project3.jpg", "images/project3b.jpg"],
+            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
+            "url": "https://github.com/bigapplemonkey/my-food-journal"
         }]
     }
 };
