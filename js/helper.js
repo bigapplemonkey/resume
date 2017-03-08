@@ -37,7 +37,7 @@ var HTMLworkStart = '<div class="work-entry col-xs-12 col-sm-9"></div><div class
 var HTMLworkEmployer = '<a class="entry-title" href="%data%" target="_blank">%data%';
 var HTMLworkTitle = ' - %data%</a>';
 var HTMLworkDates = '<div class="date-text">%data%</div>';
-var HTMLworkLocation = '<div class="location-text flex-item"><span class="entypo-location location-icon"></span>%data%</div>';
+var HTMLworkLocation = '<div class="location-text flex-item"><i class="fa fa-map-marker location-icon" aria-hidden="true"></i></span>%data%</div>';
 var HTMLworkDescription = '<p><br><br>%data%</p>';
 
 
@@ -54,7 +54,7 @@ var HTMLschoolStart = '<div class="education-entry col-xs-12 col-sm-9"></div><di
 var HTMLschoolName = '<a class="flex-item entry-title" href="%data%" target="_blank">%data%';
 var HTMLschoolDegree = ' - %data%</a>';
 var HTMLschoolMajor = '<div class="flex-item"><em>Major: %data%</em></div>';
-var HTMLschoolLocation = '<div class="location-text flex-item"><span class="entypo-location location-icon"></span>%data%</div>';
+var HTMLschoolLocation = '<div class="location-text flex-item"><i class="fa fa-map-marker location-icon" aria-hidden="true"></i></span>%data%</div>';
 var HTMLschoolDates = '<div class="date-text flex-item">%data%</div>';
 
 

@@ -191,8 +191,8 @@ hr {
   float: right;
 }
 
-.location-icon {
-  font-size: 20px;
+.fa.location-icon {
+  font-size: 18px;
   color: #999;
   margin-right: 5px;
 }

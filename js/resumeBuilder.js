@@ -97,8 +97,8 @@ var model = {
             "title": "Galaxian",
             "dates": "2016",
             "description": "Bacon ipsum dolor amet ham jerky landjaeger frankfurter filet mignon. Turkey kevin pancetta, chicken hamburger corned beef tongue. Pig ham tongue flank short ribs pancetta turducken biltong meatloaf kielbasa alcatra cow t-bone tail. Pig strip steak doner rump drumstick.",
-            "images": ["images/project1.jpg"],
-            "captions": ["Tail short loin capicola leberkas meatball."],
+            "images": ["images/project1.jpg", "images/project1b.jpg"],
+            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
             "url": "https://github.com/bigapplemonkey/Classic-Arcade-Game-Clone"
         }, {
             "title": "CUPCAKE FINDER",
