@@ -97,21 +97,21 @@ var model = {
             "title": "GALAXIAN",
             "dates": "2016",
             "description": "Recreation of the classic arcade game Galaxian using a game loop engine. This implementation uses Object-Oriented Javascript and HTML5 Canvas.",
-            "images": ["images/project1.jpg", "images/project1b.jpg"],
+            "images": ["images/project1-large.jpg", "images/project1b-large.jpg"],
             "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
             "url": "https://github.com/bigapplemonkey/Classic-Arcade-Game-Clone"
         }, {
             "title": "CUPCAKE FINDER",
             "dates": "2016",
             "description": "This a single page application featuring locations of cupcake shops near you built using a Model-View-ViewModel pattern. It allows the user to add/remove shops from his/her Favorite list and retrieve details from a shop as contact information, reviews and photos. Knockout.js, Materialize, Google Map API, Foursquare API.",
-            "images": ["images/project2.jpg", "images/project2b.jpg"],
+            "images": ["images/project2-large.jpg", "images/project2b-large.jpg"],
             "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
             "url": "https://github.com/bigapplemonkey/get-your-cupcakes"
         }, {
             "title": "MY FOOD JOURNAL",
             "dates": "2017",
             "description": "Single page app that tracks the user's calorie intake, and other health-related metrics. Users are able to search for food items from the database provided by the health API and add these items to one or several meals for macro-nutrient intake tracking. Backbone,js, Semantic-UI, Nutritionix API.",
-            "images": ["images/project3.jpg", "images/project3b.jpg"],
+            "images": ["images/project3-large.jpg", "images/project3b-large.jpg"],
             "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
             "url": "https://github.com/bigapplemonkey/my-food-journal"
         }]
