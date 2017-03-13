@@ -97,8 +97,8 @@ var model = {
             "dates": "Feb 2005 - Jan 2006",
             "location": "Maracaibo, Venezuela",
             "description": "- Created operational and monitoring applications to facilitate the incorporation of crude laboratory values by the Company’s personnel to the real-time database (OSISoft PI System).<br>- Implemented mobile interfaces for manual data collection for assets not linked to the Distributed Control System (DCS) increasing the precision in oil analysis and production monitoring.",
-            "url": "http://www.pdvsa.com",
-            "locationImage": "http://www.shell.com.ve/",
+            "url": "http://www.shell.com.ve/",
+            "locationImage": "http://placehold.it/200x100/F6EDED",
             "locationURL": "https://en.wikipedia.org/wiki/Maracaibo",
             "locationText": "Known as 'The Beloved Land of the Sun' due to its warm weather. Great gastronomy."
         }]
