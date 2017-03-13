@@ -28,7 +28,7 @@ var model = {
         }, {
             "Groovy on Grails": 5
         }, {
-            "SQL/NoSQL/Grapg DB": 4
+            "SQL/NoSQL/Graph DB": 4
         }, {
             "Java/C/C++": 4
         }, {
