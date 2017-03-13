@@ -880,7 +880,7 @@ var HTMLonlineClasses = '<div class="online-education-entry col-xs-12 col-sm-9">
 var HTMLonlineTitle = '<a class="entry-title" href="%data%" target="_blank">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text flex-item">%data%</div>';
-var HTMLonlineURL = '<br><a class="example-link" href="%data%">%data%</a>';
+var HTMLonlineURL = '<br><a class="example-link" href="%data%" target="_blank">%data%</a>';
 
 
 var HTMLfooterStart = '<div class="row"><div class="col-xs-4 col-sm-2 text-left footer-name">' +
@@ -1328,16 +1328,24 @@ var model = {
             "location": "Jersey City, NJ",
             "locationImage": "http://placehold.it/200x100/F6EDED",
             "locationURL": "https://en.wikipedia.org/wiki/Jersey_City,_New_Jersey",
-            "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
+            "locationText": "Glad to call this place home. Best views of Manhattan"
 
         },
-        "welcomeMessage": "Bacon ipsum dolor amet cupim shoulder enim, ea sed elit lorem pastrami excepteur ut voluptate pork jerky velit. Deserunt ullamco drumstick meatloaf.",
+        "welcomeMessage": "Web developer passionate about the design and implementation of elegant and responsive UI. My goal is to deliver beautiful functional interfaces.",
         "skills": [{
-            "awesomeness": 5
+            "HTML/CSS/JS": 5
         }, {
-            "delivering things": 4
+            "JS Frameworks": 5
         }, {
-            "cryogenic sleep": 3
+            "CSS Frameworks": 5
+        }, {
+            "Responsive design": 5
+        }, {
+            "Groovy on Grails": 5
+        }, {
+            "SQL/NoSQL/Grapg DB": 4
+        }, {
+            "Java/C/C++": 4
         }, {
             "puppeteer master": 0
         }],
@@ -1350,36 +1358,30 @@ var model = {
             "location": "Newark, NJ",
             "degree": "Masters",
             "majors": ["Computer Science"],
-            "dates": "2014",
+            "dates": "Dec 2013",
             "url": "https://www.njit.edu",
             "locationImage": "http://placehold.it/200x100/F6EDED",
             "locationURL": "https://en.wikipedia.org/wiki/Newark,_New_Jersey",
-            "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
+            "locationText": "Home to my alma mater NJIT."
 
         }, {
             "name": "Simon Bolivar University",
             "location": "Caracas, Venezuela",
             "degree": "BS",
             "majors": ["Electronics Engineering"],
-            "dates": "2005",
+            "dates": " Dec 2005",
             "url": "http://www.usb.ve",
             "locationImage": "http://placehold.it/200x100/F6EDED",
             "locationURL": "https://en.wikipedia.org/wiki/Caracas",
-            "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
+            "locationText": "The beautiful capital city surrounded by the greens of Mountain El Avila."
 
         }],
         "onlineCourses": [{
-            "title": "JavaScript Syntax",
+            "title": "Front-End Web Developer",
             "school": "Udacity",
-            "schoolUrl": "http://www.udacity.com/courses/ud804",
-            "dates": "May 2015",
-            "url": "http://example.com"
-        }, {
-            "title": "JavaScript Syntax",
-            "school": "Udacity",
-            "schoolUrl": "http://www.udacity.com/courses/ud804",
-            "dates": "May 2015",
-            "url": "http://example.com"
+            "schoolUrl": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001",
+            "dates": "Nov 2015",
+            "url": "http://www.udacity.com"
         }]
     },
 
@@ -1387,23 +1389,33 @@ var model = {
         "jobs": [{
             "employer": "Brinqa",
             "title": "Software Engineer",
-            "dates": "February 2014 - Present",
+            "dates": "Feb 2014 - Present",
             "location": "New York, NY",
-            "description": "Bacon ipsum dolor amet ham jerky landjaeger frankfurter filet mignon. Turkey kevin pancetta, chicken hamburger corned beef tongue. Pig ham tongue flank short ribs pancetta turducken biltong meatloaf kielbasa alcatra cow t-bone tail. Pig strip steak doner rump drumstick.",
+            "description": "- Customized front and back end of the Company’s risk analytics platform using Grails framework to accommodate clients’ assessment models for Technology Risk.<br>- Developed reporting user interfaces to facilitate the making of informed decisions by end users.<br>- Gathered business requirements for the implementation of corporate dashboards to facilitate the visualization of metrics used by client to quantify risk across technology assets.<br>- Reduced time to render risk analytical data by optimizing queries executed by the Company’s NoSQL graph-based database Neo4j.",
             "url": "http://www.brinqa.com",
             "locationImage": "http://placehold.it/200x100/F6EDED",
             "locationURL": "https://en.wikipedia.org/wiki/New_York_City",
-            "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
+            "locationText": "In love and still amazed by this city."
         }, {
             "employer": "PDVSA",
-            "title": "Project Engineer",
-            "dates": "2006 – 2008",
-            "location": "Maracaibo, Venezuela",
-            "description": "Ribeye picanha capicola, doner shankle meatball strip steak shank sirloin salami jowl sausage brisket pancetta turducken. Filet mignon turducken sausage drumstick alcatra ball tip. Picanha turkey turducken, beef t-bone ham hock short loin pork loin filet mignon corned beef. Boudin prosciutto spare ribs short ribs salami.",
+            "title": "Control and Instrumentation Project Engineer",
+            "dates": "Jan 2006 – Jan 2008",
+            "location": "Caracas, Venezuela",
+            "description": "- Reviewed technical corporate documentation that led to the construction of three gas-processing plants.<br>- Assessed compliance of design with applicable codes and standard engineering practices.<br>- Ensured the Instrumentation Team met project deadlines per agreed milestones.",
             "url": "http://www.pdvsa.com",
             "locationImage": "http://placehold.it/200x100/F6EDED",
-            "locationURL": "https://en.wikipedia.org/wiki/Maracaibo",
+            "locationURL": "https://en.wikipedia.org/wiki/Caracas",
             "locationText": "Shoulder ball tip cupim tongue beef meatball corned beef turkey."
+        }, {
+            "employer": "Royal Dutch Shell",
+            "title": "Surface Operations Support Intern",
+            "dates": "Feb 2005 - Jan 2006",
+            "location": "Maracaibo, Venezuela",
+            "description": "- Created operational and monitoring applications to facilitate the incorporation of crude laboratory values by the Company’s personnel to the real-time database (OSISoft PI System).<br>- Implemented mobile interfaces for manual data collection for assets not linked to the Distributed Control System (DCS) increasing the precision in oil analysis and production monitoring.",
+            "url": "http://www.pdvsa.com",
+            "locationImage": "http://www.shell.com.ve/",
+            "locationURL": "https://en.wikipedia.org/wiki/Maracaibo",
+            "locationText": "Known as 'The Beloved Land of the Sun' due to its warm weather. Great gastronomy."
         }]
     },
 
@@ -1413,21 +1425,21 @@ var model = {
             "dates": "2016",
             "description": "Recreation of the classic arcade game Galaxian using a game loop engine. This implementation uses Object-Oriented Javascript and HTML5 Canvas.",
             "images": ["images/project1-large.jpg", "images/project1b-large.jpg"],
-            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
+            "captions": ["Designed for large displays", "Difficulty increments as level progresses"],
             "url": "https://github.com/bigapplemonkey/Classic-Arcade-Game-Clone"
         }, {
             "title": "CUPCAKE FINDER",
             "dates": "2016",
             "description": "This a single page application featuring locations of cupcake shops near you built using a Model-View-ViewModel pattern. It allows the user to add/remove shops from his/her Favorite list and retrieve details from a shop as contact information, reviews and photos. Knockout.js, Materialize, Google Map API, Foursquare API.",
             "images": ["images/project2-large.jpg", "images/project2b-large.jpg"],
-            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
+            "captions": ["Responsive design across devices", "Retrieve reviews and photos of your favorite cupcake shops"],
             "url": "https://github.com/bigapplemonkey/get-your-cupcakes"
         }, {
             "title": "MY FOOD JOURNAL",
             "dates": "2017",
             "description": "Single page app that tracks the user's calorie intake, and other health-related metrics. Users are able to search for food items from the database provided by the health API and add these items to one or several meals for macro-nutrient intake tracking. Backbone,js, Semantic-UI, Nutritionix API.",
             "images": ["images/project3-large.jpg", "images/project3b-large.jpg"],
-            "captions": ["Tail short loin capicola leberkas meatball.", "Tail short loin capicola leberkas meatball."],
+            "captions": ["Responsive design across devices", "Track progress of your calories intake"],
             "url": "https://github.com/bigapplemonkey/my-food-journal"
         }]
     }

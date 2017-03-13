@@ -63,7 +63,7 @@ var HTMLonlineClasses = '<div class="online-education-entry col-xs-12 col-sm-9">
 var HTMLonlineTitle = '<a class="entry-title" href="%data%" target="_blank">%data%';
 var HTMLonlineSchool = ' - %data%</a>';
 var HTMLonlineDates = '<div class="date-text flex-item">%data%</div>';
-var HTMLonlineURL = '<br><a class="example-link" href="%data%">%data%</a>';
+var HTMLonlineURL = '<br><a class="example-link" href="%data%" target="_blank">%data%</a>';
 
 
 var HTMLfooterStart = '<div class="row"><div class="col-xs-4 col-sm-2 text-left footer-name">' +

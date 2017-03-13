@@ -414,13 +414,14 @@ paper-tabs {
 
 .pop-up-text {
     font-size: 12px;
+    line-height: 14px;
     margin: 0;
     padding: 0;
 }
 
 .pop-up-header {
-    font-size: 15px;
-    margin: 0;
+    font-size: 14px;
+    margin: 0 0 5px 0;
     padding: 0;
 }
 
@@ -776,7 +777,7 @@ paper-tabs {
         max-width: 490px;
     }
     .skill-item {
-        width: 22%;
+        width: 21%;
     }
     .welcome-message {
         margin-top: 2.4em;
